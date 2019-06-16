@@ -48,7 +48,9 @@ export default {
       //       console.log('data...', data);
       //     }
     *getExamType({ payload }, { call, put }) {
+      console.log('111')
       let data = yield call(getExamType);
+      console.log(data)
       if (data.code === 1) {
         yield put({
           type: "save",

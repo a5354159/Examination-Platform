@@ -35,13 +35,14 @@ const columns = [
 ];
 function Look(props) {
   const { getFieldDecorator } = props.form
+  const {getExamClass} =props
   const { examType, questions_type, subjectType, allQuestion } = props;
   let [ind, updataInd] = useState(-1)
   useEffect(() => {
-    props.getExamClass();
-    props.getAllCourse();
-    props.getAllExam();
-    props.getCourseClass()
+    getExamClass();
+  //   props.getAllCourse();
+  //   props.getAllExam();
+  //   props.getCourseClass()
   }, [])
 console.log(props)
   let handleSubmit = e => {
@@ -141,6 +142,7 @@ console.log(props)
   )
 }
 const MapState = state => {
+  console.log(state)
   return {
     ...state.question
   }
@@ -148,35 +150,36 @@ const MapState = state => {
 const MapDispatch = dispatch => ({
   //获取所有考试类型
   getExamClass() {
+    console.log('222')
     dispatch({
-      type: "questions/getExamType",
+      type: "question/getExamType",
     })
   },
   //获取所有课程
-  getAllCourse() {
-    dispatch({
-      type: "questions/getSubject",
-    })
-  },
-  //所有题目
-  getAllExam() {
-    dispatch({
-      type: "questions/getAllquestion"
-    })
-  },
-  //所有题目类型
-  getCourseClass() {
-    dispatch({
-      type: "questions/getQuestionsType",
-    })
-  },
-  //按条件查询
-  getClassData(payload) {
-    dispatch({
-      type: "questions/getClassData",
-      payload,
-    })
-  }
+  // getAllCourse() {
+  //   dispatch({
+  //     type: "questions/getSubject",
+  //   })
+  // },
+  // //所有题目
+  // getAllExam() {
+  //   dispatch({
+  //     type: "questions/getAllquestion"
+  //   })
+  // },
+  // //所有题目类型
+  // getCourseClass() {
+  //   dispatch({
+  //     type: "questions/getQuestionsType",
+  //   })
+  // },
+  // //按条件查询
+  // getClassData(payload) {
+  //   dispatch({
+  //     type: "questions/getClassData",
+  //     payload,
+  //   })
+  // }
 })
 export default connect(MapState, MapDispatch)(Form.create({ name: "search_question" })(Look))
 

@@ -8,6 +8,7 @@ import {connect} from 'dva';
 // 引入路由
 import SortQuestions from '@/views/Main/Questions/SortQuestions';
 import ViewQuestions from '@/views/Main/Questions/ViewQuestions';
+import AddQuestions from '@/views/Main/Questions/AddQuestions';
 
 const { Header, Content, Sider } = Layout;
 
@@ -23,7 +24,7 @@ function IndexPage(props){
       <Content>
         <Switch>
           <Redirect exact from="/" to="/questions/add"/>
-          <Route path="/questions/add" component={null}></Route>
+          <Route path="/questions/add" component={AddQuestions}></Route>
           <Route path="/questions/type" component={SortQuestions}></Route>
           <Route path="/questions/view" component={ViewQuestions}></Route>
         </Switch>

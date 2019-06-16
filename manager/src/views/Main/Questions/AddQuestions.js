@@ -47,7 +47,7 @@ class Add extends Component {
     });
   };
   render() {
-    // let { value, value1, detail1, subject, getQuestionsType } = this.state;
+    let { value, value1, detail1, subject, getQuestionsType } = this.state;
     // let {remote_subjectType}=this.props
     // console.log(this.props.remote_subjectType)
     return (
@@ -100,12 +100,12 @@ class Add extends Component {
                 </label>
               </div>
               <div className="for-container">
-                {/* <Editor value={value} onChange={this.handleChange.bind(this)} /> */}
+                <Editor value={value} onChange={this.handleChange.bind(this)} />
 
-                {/* <textarea
+                <textarea
                   placeholder="请输入内容..."
                   style={{ width: "100%", height: "150px" }}
-                /> */}
+                />
               </div>
             </div>
 
@@ -205,11 +205,11 @@ class Add extends Component {
                 </label>
               </div>
               <div className="for-container">
-                {/* <Editor value={value} onChange={this.handleChange.bind(this)} /> */}
-                {/* <textarea
+                <Editor value={value} onChange={this.handleChange.bind(this)} />
+                <textarea
                   placeholder="请输入内容..."
                   style={{ width: "100%", height: "150px" }}
-                /> */}
+                />
               </div>
             </div>
             <div className="EditQuestions_footBtn__3cky1">
@@ -248,19 +248,19 @@ class Add extends Component {
   }
 
   btn = () => {
-    // confirm({
-    //   title: "你确定要添加这道试题吗?",
-    //   content: "真的要添加吗？",
-    //   okText: "确定",
-    //   okType: "danger",
-    //   cancelText: "取消",
-    //   onOk() {
-    //     console.log("OK");
-    //   },
-    //   onCancel() {
-    //     console.log("Cancel");
-    //   }
-    // });
+    confirm({
+      title: "你确定要添加这道试题吗?",
+      content: "真的要添加吗？",
+      okText: "确定",
+      okType: "danger",
+      cancelText: "取消",
+      onOk() {
+        console.log("OK");
+      },
+      onCancel() {
+        console.log("Cancel");
+      }
+    });
   };
 }
 let mapStateToProp = state => {

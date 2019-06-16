@@ -9,20 +9,20 @@ export function getQuestions(){
 }
 
 // 获取所有的类型试题
-export function getQuestionTypes(){
+export function getQuestionsType(){
   return request({
     url: '/exam/getQuestionsType'
   })
 }
 
-//考试类型 
+//考试类型 v
 export function getExamType(){
 	return request({
 		url:'exam/examType',
 		method:'GET',
 	})
 }
-//获取所有的课程
+//获取所有的课程v
 export function getSubject(){
 	return request({
 		url:'/exam/subject',

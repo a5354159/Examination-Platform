@@ -1,4 +1,4 @@
-import { getExamType, getSubject, getQuestionsType ,addQuestions,getAllquestion,getClassQuery,updateQuestion,
+import { getExamType, getSubject, getQuestionsType ,addQuestions,getAllquestions,getClassQuery,updateQuestion,
   addQuestionsType} from "@/services";
 export default {
   //命名空间
@@ -50,7 +50,7 @@ export default {
     *getExamType({ payload }, { call, put }) {
       console.log('111')
       let data = yield call(getExamType);
-      console.log(data)
+      // console.log(data)
       if (data.code === 1) {
         yield put({
           type: "save",
@@ -108,6 +108,7 @@ export default {
     *getQuestionsType({ payload }, { call, put }) {
       let data = yield call(getQuestionsType);
       // console.log("getQuestionsType:", data);
+      console.log("11111111111111111111",data);
       if (data.code === 1) {
         yield put({
           type: "save",
@@ -129,8 +130,8 @@ export default {
         })
       }
     },
-    *getAllquestion({ payload }, { call, put }) {
-      let data = yield call(getAllquestion);
+    *getAllquestions({ payload }, { call, put }) {
+      let data = yield call(getAllquestions);
       if (data.code === 1) {
         yield put({
           type: "save",

@@ -40,11 +40,12 @@ function Look(props) {
   let [ind, updataInd] = useState(-1)
   useEffect(() => {
     getExamClass();
-  //   props.getAllCourse();
-  //   props.getAllExam();
-  //   props.getCourseClass()
+    props.getAllCourse(); //课程类型  getsubject 返回名subjectType
+    // props.getAllExam();
+    props.getCourseClass()
   }, [])
-console.log(props)
+// console.log(props)
+console.log(questions_type)
   let handleSubmit = e => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
@@ -155,24 +156,24 @@ const MapDispatch = dispatch => ({
       type: "question/getExamType",
     })
   },
-  //获取所有课程
-  // getAllCourse() {
-  //   dispatch({
-  //     type: "questions/getSubject",
-  //   })
-  // },
+  //获取所有课程类型
+  getAllCourse() {
+    dispatch({
+      type: "question/getSubject",
+    })
+  },
   // //所有题目
   // getAllExam() {
   //   dispatch({
-  //     type: "questions/getAllquestion"
+  //     type: "question/getAllquestions"
   //   })
   // },
   // //所有题目类型
-  // getCourseClass() {
-  //   dispatch({
-  //     type: "questions/getQuestionsType",
-  //   })
-  // },
+  getCourseClass() {
+    dispatch({
+      type: "question/getQuestionsType",
+    })
+  },
   // //按条件查询
   // getClassData(payload) {
   //   dispatch({

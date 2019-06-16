@@ -2,7 +2,7 @@
 import request from '../utils/request'
 console.log(request)
 // 获取所有试题
-export function getQuestions(){
+export function getAllquestion(){
   return request({
     url: '/exam/questions/new'
   })

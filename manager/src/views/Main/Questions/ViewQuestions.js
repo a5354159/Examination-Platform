@@ -41,7 +41,7 @@ function Look(props) {
   useEffect(() => {
     getExamClass();
     props.getAllCourse(); //课程类型  getsubject 返回名subjectType
-    // props.getAllExam();
+    props.getAllExam();
     props.getCourseClass()
   }, [])
 // console.log(props)
@@ -163,11 +163,11 @@ const MapDispatch = dispatch => ({
     })
   },
   // //所有题目
-  // getAllExam() {
-  //   dispatch({
-  //     type: "question/getAllquestions"
-  //   })
-  // },
+  getAllExam() {
+    dispatch({
+      type: "question/getAllquestions"
+    })
+  },
   // //所有题目类型
   getCourseClass() {
     dispatch({

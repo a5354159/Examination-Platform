@@ -1,10 +1,12 @@
 import {getexamlist} from "@/services";
 export default {
   // 命名空间
-  namespace: 'example',
+  namespace: 'examlist',
 
   // 模块内部的状态
-  state: {},
+  state: {
+    sexam:[]
+  },
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
@@ -13,19 +15,17 @@ export default {
 
   // 异步操作
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({ type: 'save' });
-    },
-    *getexamlist({ payload }, { call, put }){
+    // *fetch({ payload }, { call, put }) {  // eslint-disable-line
+    //   yield put({ type: 'save' });
+    // },
+    *getexamlists({ payload }, { call, put }){
       console.log('aaa')
       let data = yield call(getexamlist);
-
+      console.log(data)
       if (data.code === 1) {
         yield put({
           type: "save",
-          payload: {
-            getexamlist: data.data
-          }
+          payload: data.exam
         });
       }
     }
@@ -34,7 +34,7 @@ export default {
   // 同步操作
   reducers: {
     save(state, action) {
-      return { ...state, ...action.payload };
+      return { ...state, sexam:action.payload };
     },
   },
 

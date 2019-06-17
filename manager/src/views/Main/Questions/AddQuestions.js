@@ -102,10 +102,10 @@ class Add extends Component {
               <div className="for-container">
                 <Editor value={value} onChange={this.handleChange.bind(this)} />
 
-                <textarea
+                {/* <textarea
                   placeholder="请输入内容..."
                   style={{ width: "100%", height: "150px" }}
-                />
+                /> */}
               </div>
             </div>
 
@@ -206,10 +206,10 @@ class Add extends Component {
               </div>
               <div className="for-container">
                 <Editor value={value} onChange={this.handleChange.bind(this)} />
-                <textarea
+                {/* <textarea
                   placeholder="请输入内容..."
                   style={{ width: "100%", height: "150px" }}
-                />
+                /> */}
               </div>
             </div>
             <div className="EditQuestions_footBtn__3cky1">

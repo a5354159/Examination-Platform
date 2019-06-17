@@ -12,6 +12,10 @@ import AddQuestions from "@/views/Main/Questions/AddQuestions";
 import Detail from "./Questions/detal/index";
 import Edit from "./Questions/Edit";
 
+//考试列表
+import AddExam from "./Exam/AddExam/index";
+import ExamList from "./Exam/ExamList/index";
+
 const { Header, Content, Sider } = Layout;
 
 function IndexPage(props) {
@@ -32,6 +36,9 @@ function IndexPage(props) {
             <Route path="/questions/view" component={ViewQuestions} />
             <Route path="/questions/detail" component={Detail} />{" "}
             <Route path="/edit/questions" component={Edit} />
+            {/* 考试管理 */}
+            <Route path="/exam/addExam" component={AddExam} />
+            <Route path="/exam/examList" component={ExamList} />
           </Switch>
           {props.loading ? (
             <div className={styles.loading}>

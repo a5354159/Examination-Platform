@@ -1,4 +1,4 @@
-import {getQuestionsTypesss} from "@/services";
+import {getexamlist} from "@/services";
 export default {
   // 命名空间
   namespace: 'example',
@@ -16,14 +16,15 @@ export default {
     *fetch({ payload }, { call, put }) {  // eslint-disable-line
       yield put({ type: 'save' });
     },
-    *getQuestionsTypesss({ payload }, { call, put }){
-      let data = yield call(getQuestionsTypesss);
+    *getexamlist({ payload }, { call, put }){
+      console.log('aaa')
+      let data = yield call(getexamlist);
 
       if (data.code === 1) {
         yield put({
           type: "save",
           payload: {
-            getQuestionsTypesss: data.data
+            getexamlist: data.data
           }
         });
       }

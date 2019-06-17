@@ -3,37 +3,16 @@ import {connect} from 'dva';
 import {Modal, Form, Input, Button,Layout,Table,} from 'antd';
 import AddStyle from "./AddStyle.scss";
 const { Content } = Layout;
-
-// import React, { Component } from "react";
-// import {
-//   Layout,
-//   Menu,
-//   // Breadcrumb,
-//   // Icon,
-//   Table,
-//   // Divider,
-//   Modal,
-//   Input,
-//   Form,
-//   Button
-// } from "antd";
-// import { Layout, Menu, Select, Spin ,Input,Form,Button} from "antd";
-// import { connect } from "dva";
-
 function SortQuestions(props){
   // 控制添加弹框
   let [showDialog, updateDialog] = useState(false);
-
   // 获取所有试题类型
   useEffect(()=>{
     props.getQuestionTypes();
   }, []);
-
   // 处理提交
   let handleSubmit = e=>{
-
   };
-
   const { getFieldDecorator } = props.form;
   const columns = [
           {

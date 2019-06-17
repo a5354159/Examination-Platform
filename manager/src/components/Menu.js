@@ -32,6 +32,38 @@ function MenuComp(props){
         <Link to="/questions/view">查看试题</Link>
       </Menu.Item>
     </SubMenu>
+    <SubMenu
+      key="user"
+      title={
+        <span>
+          <Icon type="user" />
+          用户管理
+        </span>
+      }
+    >
+      <Menu.Item key="4">
+        <Link to="/questions/add">添加试题</Link>
+      </Menu.Item>
+      <Menu.Item key="5">
+        <Link to="/questions/type">试题分类</Link>
+      </Menu.Item>
+    </SubMenu>
+    <SubMenu
+      key="exam"
+      title={
+        <span>
+          <Icon type="user" />
+          考试管理
+        </span>
+      }
+    >
+      <Menu.Item key="6">
+        <Link to="/exam/addExam">添加考试</Link>
+      </Menu.Item>
+      <Menu.Item key="7">
+        <Link to="/exam/examList">试卷列表</Link>
+      </Menu.Item>
+    </SubMenu>
   </Menu>
 }
 

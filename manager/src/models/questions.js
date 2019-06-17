@@ -130,6 +130,8 @@ export default {
         })
       }
     },
+
+    //获取所有的试题
     *getAllquestion({ payload }, { call, put }) {
       let data = yield call(getAllquestion);
       if (data.code === 1) {

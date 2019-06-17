@@ -22,6 +22,7 @@ export function getExamType(){
 		method:'GET',
 	})
 }
+
 //获取所有的课程v
 export function getSubject(){
 	return request({
@@ -48,18 +49,18 @@ export function addQuestions(params){
 // 	})
 // }
 // //查询接口
-// export function getClassQuery(params){
-// 	return request({
-// 		url:"/exam/questions/condition",
-// 		method:"GET",
-// 		params,
-// 	})
-// }
+export function getClassQuery(params){
+	return request({
+		url:"/exam/questions/condition",
+		method:"GET",
+		params,
+	})
+}
 // //更新试题接口
-// export function updateQuestion(data){
-// 	return request({
-// 		url:"/exam/questions/update",
-// 		method:"PUT",
-// 		data
-// 	})
-// }
+export function updateQuestion(data){
+	return request({
+		url:"/exam/questions/update",
+		method:"PUT",
+		data
+	})
+}

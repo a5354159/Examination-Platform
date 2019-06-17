@@ -45,7 +45,7 @@ function Look(props) {
     props.getCourseClass()
   }, [])
 // console.log(props)
-console.log(questions_type)
+// console.log(questions_type)
   let handleSubmit = e => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
@@ -58,6 +58,7 @@ console.log(questions_type)
           payload.subject_id = subjectType[ind].subject_id
         }
         props.getClassData(payload)
+        console.log(props)
       }
     });
   };
@@ -165,7 +166,7 @@ const MapDispatch = dispatch => ({
   // //所有题目
   getAllExam() {
     dispatch({
-      type: "question/getAllquestions"
+      type: "question/getAllquestion"
     })
   },
   // //所有题目类型
@@ -175,12 +176,12 @@ const MapDispatch = dispatch => ({
     })
   },
   // //按条件查询
-  // getClassData(payload) {
-  //   dispatch({
-  //     type: "questions/getClassData",
-  //     payload,
-  //   })
-  // }
+  getClassData(payload) {
+    dispatch({
+      type: "questions/getClassData",
+      payload,
+    })
+  }
 })
 export default connect(MapState, MapDispatch)(Form.create({ name: "search_question" })(Look))
 

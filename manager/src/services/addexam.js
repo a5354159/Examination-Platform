@@ -1,6 +1,7 @@
 // // import {getRequest,request} from '../utils/request';
 import request from '../utils/request'
 // console.log(request)
+
 // 获取所有考试试卷列表
 export function getexamlist(){
   return request({
@@ -8,6 +9,28 @@ export function getexamlist(){
   })
 }
 
+
+// export function ExamType(){
+//   return request({
+//     url: '/exam/exam'
+//   })
+// }
+
+//考试类型
+export function getaExamType(){
+	return request({
+		url:'/exam/examType',
+		method:'GET',
+	})
+}
+
+//all考试类型
+export function getSubjectAgin(){
+	return request({
+		url:'/exam/subject',
+		method:'GET',
+	})
+}
 // // 获取所有的类型试题
 // export function getQuestionsType(){
 //   return request({

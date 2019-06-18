@@ -42,10 +42,10 @@ function MenuComp(props){
       }
     >
       <Menu.Item key="4">
-        <Link to="/questions/add">添加试题</Link>
+        <Link to="/user/adduser">添加试题</Link>
       </Menu.Item>
       <Menu.Item key="5">
-        <Link to="/questions/type">试题分类</Link>
+        <Link to="/user/adduser">试题分类</Link>
       </Menu.Item>
     </SubMenu>
     <SubMenu

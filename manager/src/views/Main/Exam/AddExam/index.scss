@@ -1,7 +1,17 @@
-.wrap{
+
+:global {
+  .wrap{
     overflow: auto
   }
   .box{
     box-sizing: border-box;
     padding: 14px 24px 24px;
   }
+  // ant-form-horizontal ant-advanced-search-form
+  .box-wrap{
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    flex-direction: column;
+  }
+}

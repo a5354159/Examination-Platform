@@ -1,10 +1,10 @@
 import React,{useEffect,Component} from "react";
 import { connect } from "dva";
-import { Layout, Button, Icon, Select, Spin, Modal, Form, Row, Col, Input } from "antd";
+import { Layout, Button, Icon, Select, Spin, Modal, Form, Row, Col, Input , DatePicker, TimePicker} from "antd";
 import Editor from "for-editor";
 const { Content } = Layout;
 const { Option } = Select;
-
+const { MonthPicker, RangePicker } = DatePicker;
 // function AddExam(props){
 class AddExam extends Component {
     state = {expand: false }
@@ -19,34 +19,32 @@ class AddExam extends Component {
         console.log('a')
     };
 
-     getFields() {
-        const count = this.state.expand ? 10 : 6;
-    const { getFieldDecorator } = this.props.form;
-        const children = [];
-        for (let i = 0; i < 10; i++) {
-          children.push(
-            <Col span={8} key={i} style={{ display: i < count ? 'block' : 'none' }}>
-              <Form.Item label={`Field ${i}`}>
-                {getFieldDecorator(`field-${i}`, {
-                  rules: [
-                    {
-                      required: true,
-                      message: 'Input something!',
-                    },
-                  ],
-                })(<Input placeholder="placeholder" />)}
-              </Form.Item>
-            </Col>,
-          );
+    handleSubmit = e => {
+      e.preventDefault();
+  
+      this.props.form.validateFields((err, fieldsValue) => {
+        if (err) {
+          return;
         }
-        return children;
-      };
-      handleSearch = e => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-          console.log('Received values of form: ', values);
-        });
-      };
+  
+        // Should format date value before submit.
+        const rangeValue = fieldsValue['range-picker'];
+        const values = {
+          ...fieldsValue,
+          'range-picker': [rangeValue[0].format('YYYY-MM-DD'), rangeValue[1].format('YYYY-MM-DD')]
+        };
+        console.log('Received values of form: ', values);
+      });
+
+      
+    };
+  
+      // handleSearch = e => {
+      //   e.preventDefault();
+      //   this.props.form.validateFields((err, values) => {
+      //     console.log('Received values of form: ', values);
+      //   });
+      // };
     
       handleReset = () => {
         this.props.form.resetFields();
@@ -57,6 +55,27 @@ class AddExam extends Component {
         this.setState({ expand: !expand });
       };
       render() {
+        const { getFieldDecorator } = this.props.form;
+        const formItemLayout = {
+          // labelCol: {
+          //   xs: { span: 24 },
+          //   sm: { span: 8 },
+          // },
+          wrapperCol: {
+            xs: { span: 24 },
+            sm: { span: 16 },
+          },
+        };
+        // const config = {
+        //   rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+        // };
+        const rangeConfig = {
+          rules: [{ type: 'array', required: true, message: 'Please select time!' }],
+        };
+
+
+        const count = this.state.expand ? 4 : 4;
+    // const { getFieldDecorator } = this.props.form;
           return (
         <div className='wrap'>
             <div className='box'>
@@ -71,24 +90,91 @@ class AddExam extends Component {
                     overflow: 'auto',
                 }}
                 >
-
                 <div>
-
                 <Form className="ant-advanced-search-form" onSubmit={this.handleSearch}>
-        <Row gutter={24}>{this.getFields()}</Row>
-        <Row>
-          <Col span={24} style={{ textAlign: 'right' }}>
-            <Button type="primary" htmlType="submit">
-              Search
-            </Button>
-            <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-              Clear
-            </Button>
-            <a style={{ marginLeft: 8, fontSize: 12 }} onClick={this.toggle}>
-              Collapse <Icon type={this.state.expand ? 'up' : 'down'} />
-            </a>
-          </Col>
+        <Row gutter={24}>
+        {/* {this.getFields()} */}
+        <div className='box-wrap'
+            style={{ 
+              display:'flex',
+              flexDirection:"column"
+              // display: i < count ? 'block' : 'none' 
+            }}
+            >
+            <Col span={8} key={0} >
+              <Form.Item label={`试卷名称`}>
+                {getFieldDecorator(`field-${0}`, {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入!',
+                    },
+                  ],
+                })(<Input placeholder=" " />)}
+              </Form.Item>
+            </Col>
+            <Col span={8} key={1}>
+              <Form.Item label={`考试类型`}>
+                {getFieldDecorator(`field-${1}`, {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入!',
+                    },
+                  ],
+                })(<Input placeholder=" " />)}
+              </Form.Item>
+              
+            </Col>
+            <Col span={8} key={2}>
+              <Form.Item label={`选择课程`}>
+                {getFieldDecorator(`field-${2}`, {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入!',
+                    },
+                  ],
+                })(<Input placeholder=" " />)}
+              </Form.Item>
+              
+            </Col>
+            <Col span={8} key={3}>
+              <Form.Item label={`设置题量 `}>
+                {getFieldDecorator(`field-${3}`, {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入!',
+                    },
+                  ],
+                })(<Input placeholder=" " />)}
+              </Form.Item>
+              
+            </Col>
+             </div>
         </Row>
+
+        <div>
+        </div>
+      </Form>
+
+
+      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+        
+        <Form.Item label="">
+          {getFieldDecorator('range-picker', rangeConfig)(<RangePicker />)}
+        </Form.Item>
+        <Form.Item
+          wrapperCol={{
+            xs: { span: 24, offset: 0 },
+            sm: { span: 16, offset: 8 },
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
       </Form>
                     {/* <div className="ant-row ant-form-item">
                     <div className="ant-form-item-label">

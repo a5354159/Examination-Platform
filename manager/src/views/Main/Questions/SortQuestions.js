@@ -1,54 +1,101 @@
-import React, {useState, useEffect} from 'react';
-import {connect} from 'dva';
-import {Modal, Form, Input, Button} from 'antd';
-
-
-function SortQuestions(props){
-  // 控制添加弹框
-  let [showDialog, updateDialog] = useState(false);
-
-  // 获取所有试题类型
-  useEffect(()=>{
-    props.getQuestionTypes();
-  }, []);
-
-  // 处理提交
-  let handleSubmit = e=>{
-
-  };
-
-  const { getFieldDecorator } = props.form;
-  return <div>
-    <Button onClick={()=>updateDialog(true)}>添加类型</Button>
-    <Modal visible={showDialog} onCancel={()=>updateDialog(false)}>
-      <Form onSubmit={handleSubmit} >
-        <Form.Item>
-            {getFieldDecorator('username', {
-              rules: [{ required: true, message: 'Please input your username!' }],
-            })(
-              <Input
-                placeholder="请输入试题类型"
-              />,
-            )}
-          </Form.Item>
-      </Form>
-    </Modal>
-  </div>;
-}
-
-const mapStateToProps = state=>{
-  console.log('state..', state);
-  return {
-    loading: state.loading.global
-  }
-}
-const mapDispatchToProps = dispatch=>{
-  return {
-    getQuestionTypes(){
-      dispatch({
-        type: 'questions/getQuestionTypes'
-      })
+import React, { Component } from 'react';
+import { Modal, Button, Input, Table } from 'antd';
+import { connect } from 'dva';
+const columns = [
+    {
+        title: '类型ID',
+        dataIndex: 'questions_type_id',
+        render: text => <a href="javascript:;">{text}</a>,
+    },
+    {
+        title: '类型名称',
+        dataIndex: 'questions_type_text',
+    },
+    {
+        title: '操作',
+        dataIndex: 'questions_type_sort',
     }
-  }
+];
+const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    },
+    getCheckboxProps: record => ({
+        disabled: record.name === 'Disabled User', // Column configuration not to be checked
+        name: record.name,
+    }),
+};
+class Type extends Component {
+
+    state = { visible: false };
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+    };
+
+    handleOk = e => {
+        this.setState({
+            visible: false,
+        });
+    };
+
+    handleCancel = e => {
+        this.setState({
+            visible: false,
+        });
+    };
+
+    componentDidMount() {
+        this.props.type()
+    }
+    render() {
+        return (
+            <div className="content">
+                <h2>考试分类</h2>
+                <div className="el_conent">
+                    <Button type="primary" onClick={this.showModal}>
+                        + 添加类型
+                    </Button>
+                    <Modal
+                        title="创建新类型"
+                        visible={this.state.visible}
+                        onOk={this.handleOk}
+                        onCancel={this.handleCancel}>
+                        <Input placeholder="请输入类型名称"></Input>
+                    </Modal>
+                    <Table rowSelection={rowSelection} columns={columns} dataSource={this.props.exo.data} />
+                </div>
+            </div>
+        );
+    }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(SortQuestions));
+
+
+// props的类型检查
+Type.propTypes = {
+
+}
+// props的默认值
+Type.defaultProps = {
+
+}
+
+const mapStateToProps = state => {
+    console.log('state...', state);
+    return {
+        ...state.user
+    }
+}
+
+const mapDisaptchToProps = dispatch => {
+    return {
+        type() {
+            dispatch({
+                type: 'user/type'
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDisaptchToProps)(Type)

@@ -102,7 +102,7 @@ class ExamList extends Component {
     return (
       <div className="wrap">
         <div className="box">
-          <h2 style={{ padding: "20px 0px" }}>添加考试</h2>
+          <h2 style={{ padding: "20px 0px" }}>试卷列表</h2>
           <Content
             style={{
               background: "#fff",

@@ -48,6 +48,25 @@ function MenuComp(props){
         <Link to="/questions/showUser">用户展示</Link>
       </Menu.Item>
     </SubMenu>
+    <SubMenu
+      key="class"
+      title={
+        <span>
+          <Icon type="class" />
+          班级管理
+        </span>
+      }
+    >
+      <Menu.Item key="8">
+        <Link to="/questions/addUser">班级管理</Link>
+      </Menu.Item>
+      <Menu.Item key="9">
+        <Link to="/questions/showUser">教室管理</Link>
+      </Menu.Item>
+      <Menu.Item key="10">
+        <Link to="/questions/showUser">学生管理</Link>
+      </Menu.Item>
+    </SubMenu>
   </Menu>
 }
 

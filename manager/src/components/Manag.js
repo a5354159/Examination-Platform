@@ -28,6 +28,7 @@ function Manag(props){
       <Menu.Item key="2">
         <Link to="/questions/showUser">用户展示</Link>
       </Menu.Item>
+      
     </SubMenu>
   </Menu>
 }

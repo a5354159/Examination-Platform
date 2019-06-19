@@ -51,9 +51,9 @@ class Add extends Component {
     // let {remote_subjectType}=this.props
     // console.log(this.props.remote_subjectType)
     return (
-      <div className='wrap'>
+      <div className={AddStyle.wrap}>
 
-      <div className='box'>
+      <div className={AddStyle.box}>
         <h2 style={{ padding: "20px 0px" }}>添加试题</h2>
         <Content
           style={{

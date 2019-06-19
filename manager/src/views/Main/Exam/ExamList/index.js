@@ -110,12 +110,13 @@ class ExamList extends Component {
               margin: 0,
               minHeight: 80,
               borderRadius: 15,
+              border:'none',
               overflow: "auto"
             }}
           >
             <Form onSubmit={this.handleSubmit}>
               <Row>
-                <Col span={8}>
+                <Col span={10}>
                   <Form.Item>
                     考试类型:
                     {getFieldDecorator("exam_id", {})(
@@ -132,7 +133,7 @@ class ExamList extends Component {
                     )}
                   </Form.Item>
                 </Col>
-                <Col span={8}>
+                <Col span={10}>
                   <Form.Item>
                     题目类型:
                     {getFieldDecorator("subject_id", {})(
@@ -153,7 +154,7 @@ class ExamList extends Component {
                     )}
                   </Form.Item>
                 </Col>
-                <Col span={8}>
+                <Col span={4}>
                   <Button
                     className={style.btn}
                     htmlType="submit"

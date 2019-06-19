@@ -15,11 +15,19 @@
       height: 200px !important;
     }
     .wrap{
+      width: 100%;
       overflow: auto
     }
     .box{
       box-sizing: border-box;
       padding: 14px 24px 24px;
+    }
+    .el_conent{
+      
+      box-sizing: border-box;
+      padding: 14px 24px 24px;
+      background: #fff;
+      border-radius: 15px;
     }
   }
   

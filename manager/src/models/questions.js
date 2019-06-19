@@ -1,4 +1,4 @@
-import { getExamType, getSubject, getQuestionsType ,addQuestions,getAllquestion,getClassQuery,updateQuestion,
+import { ExamTypes, getSubject, getQuestionsType ,addQuestions,getAllquestion,getClassQuery,updateQuestion,
   addQuestionsType} from "@/services";
 export default {
   //命名空间
@@ -47,9 +47,9 @@ export default {
       //       let data = yield call(getQuestionTypes);
       //       console.log('data...', data);
       //     }
-    *getExamType({ payload }, { call, put }) {
+    *getExamTypes({ payload }, { call, put }) {
       console.log('111')
-      let data = yield call(getExamType);
+      let data = yield call(ExamTypes);
       // console.log(data)
       if (data.code === 1) {
         yield put({

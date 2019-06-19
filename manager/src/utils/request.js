@@ -62,8 +62,7 @@
 
 
 import axios from 'axios'
-import {getToken} from '@/utils/user'
-
+import { getToken } from "@/utils/user"
 // create an axios instance
 const service = axios.create({
   baseURL: 'http://169.254.0.112:7001/',
@@ -76,9 +75,9 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
-    // 判断是否有登陆态
+    //判断是否登录状态
     if (getToken()) {
-      // 让每个请求携带authorization
+      //让每个请求携带authorization
       config.headers['authorization'] = getToken()
     }
     return config

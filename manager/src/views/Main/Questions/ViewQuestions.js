@@ -3,6 +3,7 @@ import style from "./index.css";
 import { connect } from "dva";
 import { Link } from "dva/router"
 import { Layout, Breadcrumb, Select, Row, Col, Button, Icon, Tag, Table, Form, Empty } from 'antd';
+import AddStyle from "./AddStyle.scss";
 const { Content } = Layout;
 const { Option } = Select;
 const columns = [
@@ -39,7 +40,7 @@ function Look(props) {
   const { examType, questions_type, subjectType, allQuestion } = props;
   let [ind, updataInd] = useState(-1)
   useEffect(() => {
-    getExamClass();
+    examType();
     props.getAllCourse(); //课程类型  getsubject 返回名subjectType
     props.getAllExam();
     props.getCourseClass()
@@ -63,16 +64,22 @@ function Look(props) {
     });
   };
   return (
-    <Layout style={{ padding: '0 24px 24px' }}>
-      <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>试题分类</Breadcrumb.Item>
-      </Breadcrumb>
+    <div className='wrap'>
+      <div className='box'>
+    {/* <Layout style={{ padding: '0 24px 24px' }}> */}
+      {/* <Breadcrumb style={{ margin: '16px 0' }}> */}
+        {/* <Breadcrumb.Item> */}
+        <h2 style={{ padding: '20px 0px', marginTop: "10px" }}>试题分类</h2>
+        {/* </Breadcrumb.Item> */}
+      {/* </Breadcrumb> */}
       <Content
         style={{
           background: '#fff',
           padding: 24,
-          margin: 0,
-          minHeight: 180,
+          // margin: 0,
+          // minHeight: 180,
+          border:'none',
+          borderRadius:'15px'
         }}
       >
         <Form onSubmit={handleSubmit}>
@@ -102,11 +109,11 @@ function Look(props) {
                       </div>
                     )}
                   >
-                    {
-                      examType.map(item => (
+                    {/* {
+                      examType&&examType.map(item => (
                         <Option key={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
                       ))
-                    }
+                    } */}
                   </Select>
                 )}
               </Form.Item>
@@ -122,11 +129,11 @@ function Look(props) {
                     </div>
                   )}
                 >
-                  {
+                  {/* {
                     questions_type.map(item => (
                       <Option key={item.questions_type_id} value={item.questions_type_id}>{item.questions_type_text}</Option>
                     ))
-                  }
+                  } */}
                 </Select>
               )}
               </Form.Item>
@@ -140,7 +147,9 @@ function Look(props) {
         </Form>
         {allQuestion.length === 0 ? <Empty /> : <Table rowKey={"questions_id"} className={style.table} columns={columns} dataSource={allQuestion} />}
       </Content>
-    </Layout>
+    {/* </Layout> */}
+    </div>
+    </div>
   )
 }
 const MapState = state => {
@@ -151,36 +160,36 @@ const MapState = state => {
 }
 const MapDispatch = dispatch => ({
   //获取所有考试类型
-  getExamClass() {
-    console.log('222')
-    dispatch({
-      type: "question/getExamType",
-    })
+  examType() {
+    // console.log('222')
+    // dispatch({
+    //   type: "user/getSubject",
+    // })
   },
   //获取所有课程类型
   getAllCourse() {
-    dispatch({
-      type: "question/getSubject",
-    })
+    // dispatch({
+    //   type: "question/getSubject",
+    // })
   },
   // //所有题目
   getAllExam() {
-    dispatch({
-      type: "question/getAllquestion"
-    })
+    // dispatch({
+    //   type: "question/getAllquestion"
+    // })
   },
   // //所有题目类型
   getCourseClass() {
-    dispatch({
-      type: "question/getQuestionsType",
-    })
+    // dispatch({
+    //   type: "question/getQuestionsType",
+    // })
   },
   // //按条件查询
   getClassData(payload) {
-    dispatch({
-      type: "questions/getClassData",
-      payload,
-    })
+    // dispatch({
+    //   type: "questions/getClassData",
+    //   payload,
+    // })
   }
 })
 export default connect(MapState, MapDispatch)(Form.create({ name: "search_question" })(Look))

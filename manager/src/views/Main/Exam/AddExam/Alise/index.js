@@ -4,7 +4,9 @@ class index extends Component {
     state = {  }
     render() {
         return (
-            'aaa'
+            <>
+                没有权限
+            </>
         );
     }
 }

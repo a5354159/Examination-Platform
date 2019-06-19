@@ -1,11 +1,12 @@
-import {getexamlist,ExamType,getaExamType,getSubjectAgin} from "@/services";
+import {getexamlist,ExamType,getaExamType,getAllSubject} from "@/services";
 export default {
   // 命名空间
   namespace: 'examlist',
 
   // 模块内部的状态
   state: {
-    sexam:[]
+    sexam:[],
+    examtypes:[]
   },
 
   subscriptions: {
@@ -30,19 +31,19 @@ export default {
         });
       }
     },
-    *ExamTypes({ payload }, { call, put }){
-      let data = yield call(ExamType);
-      // console.log(data)
-      if (data.code === 1) {
-        yield put({
-          type: "save",
-          payload: data.exam
-        });
-      }
-    },
-    *getaExamTypes({ payload }, { call, put }){
+    // *ExamTypes({ payload }, { call, put }){
+    //   let data = yield call(ExamType);
+    //   // console.log(data)
+    //   if (data.code === 1) {
+    //     yield put({
+    //       type: "save",
+    //       payload: data.exam
+    //     });
+    //   }
+    // },
+    *ExamType({ payload }, { call, put }){
       let data = yield call(getaExamType);
-      // console.log(data)
+      console.log(data)
       if (data.code === 1) {
         yield put({
           type: "examtypes",
@@ -53,13 +54,13 @@ export default {
     },
 
     //all考试类型
-    *getSubject({ payload }, { call, put }) {
-      let data = yield call(getSubjectAgin);
+    *AllSubject({ payload }, { call, put }) {
+      let data = yield call(getAllSubject);
       // console.log("subject:", data);
       if (data.code === 1) {
         yield put({
-          type: "subjectType",
-          payload: data.data
+          type: "getAllSubject",
+          payload:  data.data
         });
       }
     }
@@ -73,9 +74,9 @@ export default {
     examtypes(state, action){
       return { ...state, examtypes:action.payload };
     },
-    subjectType(state, action){
-      return { ...state, subjectTypes:action.payload };
+    getAllSubject(state, action){
+      return { ...state, getAllSubject:action.payload };
     }
-  },
+  }
 
 };

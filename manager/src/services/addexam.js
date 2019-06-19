@@ -9,13 +9,6 @@ export function getexamlist(){
   })
 }
 
-
-// export function ExamType(){
-//   return request({
-//     url: '/exam/exam'
-//   })
-// }
-
 //考试类型
 export function getaExamType(){
 	return request({
@@ -25,7 +18,7 @@ export function getaExamType(){
 }
 
 //all考试类型
-export function getSubjectAgin(){
+export function getAllSubject(){
 	return request({
 		url:'/exam/subject',
 		method:'GET',

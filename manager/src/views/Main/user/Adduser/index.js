@@ -101,6 +101,7 @@ class AddUser extends Component{
                 <div className={userAddStyle.bottom}>
                     <div className={userAddStyle.bottom_Top}>
                         <div className={userAddStyle.bottom_Center}>
+                            <div className={userAddStyle.borders}>
                             <Form style={{marginLeft:'10px'}} onSubmit={this.addUser}>
                                 <Form.Item>
                                     <Radio.Group defaultValue="horizontal" onChange={this.handleFormLayoutChange} >
@@ -166,6 +167,7 @@ class AddUser extends Component{
                                     <Button type="primary" style={{marginLeft:'10px'}} onClick={()=>{this.state.flag?this.addUser('sub'):this.upDataUser('sub')}}>重置</Button>
                                 </Form.Item>
                             </Form>
+                            </div>
                         </div>
                         <div className={userAddStyle.bottom_Center}>
                             <Form onSubmit={this.addEdit}>

@@ -1,7 +1,7 @@
-import React from "react";
-import { Layout, Spin } from "antd";
-import { Route, Switch, Redirect } from "dva/router";
-import Menu from "@/components/Menu";
+import React, { useEffect, useState } from "react";
+import { Layout, Spin, Dropdown } from "antd";
+import { Route, Switch, Redirect, Menu } from "dva/router";
+import Menus from "@/components/Menu";
 import styles from "./Index.scss";
 import { connect } from "dva";
 
@@ -15,22 +15,74 @@ import Edit from "./Questions/Edit";
 //用户管理
 import Adduser from "./user/Adduser/index";
 
-
 //考试列表
 import AddExam from "./Exam/AddExam/index";
 import ExamList from "./Exam/ExamList/index";
-
+import Alise from "./Exam/AddExam/Alise/index";
+var visible = false;
+// const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
-
+const menu = e => (
+  <Menu>
+    <Menu.Item key="1">个人中心</Menu.Item>
+    <Menu.Item key="2">我的班级</Menu.Item>
+    <Menu.Item key="3">设置</Menu.Item>
+    <Menu.Item key="4">退出</Menu.Item>
+  </Menu>
+);
+let handleMenuClick = e => {
+  // if (e.key === '4') {
+  // this.setState({
+  visible = false;
+  //  });
+  console.log("asdf");
+  // }
+};
 function IndexPage(props) {
+  let handleVisibleChange = flag => {
+    console.log("a");
+    // this.setState({
+    visible: flag;
+    //  });
+  };
+
   return (
     <Layout className={styles.container}>
-      <Header>
-        <p>顶部信息</p>
+      <Header style={{ background: "#fff" }} className={styles.land_top}>
+        <div className={styles.centimg}>
+          <div className={styles.top_img}>
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551624718911&di=4a7004f8d71bd8da84d4eadf1b59e689&imgtype=0&src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg" />
+          </div>
+          <span
+            onClick={() =>
+              props.changeLocal(props.locale === "zh" ? "en" : "zh")
+            }
+            className={styles.english}
+          >
+            {props.locale === "zh" ? "中文" : "英文"}
+          </span>
+        </div>
+
+        <div className={styles.sing}>
+          <span>
+            <span>
+              <img src="https://cdn.nlark.com/yuque/0/2019/png/anonymous/1547609339813-e4e49227-157c-452d-be7e-408ca8654ffe.png?x-oss-process=image/resize,m_fill,w_48,h_48/format,png" />
+            </span>{" "}
+            <Dropdown
+              overlay={menu}
+              onVisibleChange={handleVisibleChange}
+              visible={visible}
+            >
+              <a className="ant-dropdown-link" href="#">
+                chenmanjie
+              </a>
+            </Dropdown>
+          </span>
+        </div>
       </Header>
       <Layout>
         <Sider>
-          <Menu />
+          <Menus />
         </Sider>
         <Content>
           <Switch>
@@ -40,10 +92,9 @@ function IndexPage(props) {
             <Route path="/questions/view" component={ViewQuestions} />
             <Route path="/questions/detail" component={Detail} />{" "}
             <Route path="/edit/questions" component={Edit} />
-
-{/* 用户管理 */}
+            {/* 用户管理 */}
             <Route path="/user/adduser" component={Adduser} />
-
+            <Route path="/exam/examList/detal" component={Alise} />
             {/* 考试管理 */}
             <Route path="/exam/addExam" component={AddExam} />
             <Route path="/exam/examList" component={ExamList} />
@@ -62,7 +113,22 @@ function IndexPage(props) {
 const mapStateToProps = state => {
   // console.log('state..', state);
   return {
-    loading: state.loading.global
+    loading: state.loading.global,
+    locale: state.global.locale
   };
 };
-export default connect(mapStateToProps)(IndexPage);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeLocal: payload => {
+      dispatch({
+        type: "global/changeLocale",
+        payload
+      });
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(IndexPage);

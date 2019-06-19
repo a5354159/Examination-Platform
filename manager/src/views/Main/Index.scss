@@ -1,7 +1,12 @@
 :global {
-  .content{
-    width: 100% ;
-    padding:  20px;
+  .lang{
+    display: inline-block;
+    color: #0f0;
+    cursor: pointer;
+  }
+  .content {
+    width: 100%;
+    padding: 20px;
     box-sizing: border-box;
   }
   .container {
@@ -37,7 +42,7 @@
   .header_box > div:nth-child(2) {
     color: #333;
   }
-  .ant-layout-sider{
+  .ant-layout-sider {
     overflow: auto;
   }
   .header_box > div:nth-child(2) > span {
@@ -48,7 +53,7 @@
     padding: 0 10px;
     font-size: 14px;
   }
-  .header_box > div:nth-child(2):hover{
+  .header_box > div:nth-child(2):hover {
     background: #eee;
   }
   .header_box > div:nth-child(2) > span > img {

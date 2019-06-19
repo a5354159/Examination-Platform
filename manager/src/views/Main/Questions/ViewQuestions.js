@@ -37,7 +37,7 @@ const columns = [
 function Look(props) {
   const { getFieldDecorator } = props.form
   const {getExamClass} =props
-  const { examType, questions_type, subjectType, allQuestion ,getAllSubject} = props;
+  const { examType, questions_type, subjectType, allQuestion ,getAllSubject,examtypes} = props;
   let [ind, updataInd] = useState(-1)
   useEffect(() => {
     examType();
@@ -110,11 +110,11 @@ function Look(props) {
                       </div>
                     )}
                   >
-                    {/* {
-                      examType&&examType.map(item => (
+                    {
+                      examtypes&&examtypes.map(item => (
                         <Option key={item.exam_id} value={item.exam_id}>{item.exam_name}</Option>
                       ))
-                    } */}
+                    }
                   </Select>
                 )}
               </Form.Item>
@@ -157,7 +157,8 @@ const MapState = state => {
   console.log(state)
   return {
     ...state.question,
-    ...state.examlist
+    ...state.examlist,
+    ...state.examtypes,
   }
 }
 const MapDispatch = dispatch => ({
@@ -182,7 +183,8 @@ const MapDispatch = dispatch => ({
   // },//1
   getAllExam() {
     dispatch({
-      type: "examlist/AllSubject"
+      // type: "examlist/AllSubject"
+      type:'examlist/ExamType'
     })
   },
   

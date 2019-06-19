@@ -218,6 +218,7 @@ const MapDispatch = dispatch => ({
     console.log("222");
     dispatch({
       type: "examlist/ExamType"
+      
     });
   },
 

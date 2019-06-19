@@ -26,12 +26,12 @@ export function ExamTypes(){
 }
 
 // //获取所有的课程v
-// export function getSubject(){
-// 	return request({
-// 		url:'/exam/subject',
-// 		method:'GET',
-// 	})
-// }
+export function getSubject(){
+	return request({
+		url:'/exam/subject',
+		method:'GET',
+	})
+}
 
 
 // //添加试题接口	/exam/questions POST

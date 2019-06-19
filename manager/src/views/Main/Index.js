@@ -2,7 +2,6 @@ import React from "react";
 import { Layout, Spin } from "antd";
 import { Route, Switch, Redirect } from "dva/router";
 import Menu from "@/components/Menu";
-// import Manag from "@/components/Manag";
 import styles from "./Index.scss";
 import { connect } from "dva";
 
@@ -12,6 +11,9 @@ import ViewQuestions from "@/views/Main/Questions/ViewQuestions";
 import InsertQustions from "@/views/Main/Questions/InsertQustions";
 import AddUser from "@/views/Main/User_Management/AddUser";
 import ShowUser from "@/views/Main/User_Management/ShowUser";
+import ClassManage from '@/views/Main/Class_Manage'
+import ClassroomManage from '@/views/Main/Class_Manage/ClassroomManage.js'
+import StudentsManage from '@/views/Main/Class_Manage/StudentsManage.js'
 const { Header, Content, Sider } = Layout;
 
 function IndexPage(props) {
@@ -21,6 +23,15 @@ function IndexPage(props) {
       <Header>
         <div className="header_box">
           <div>
+            <span>
+              {/* <button
+                onClick={() =>
+                  props.changeLocal(props.locale === "zh" ? "en" : "zh")
+                }
+              >
+                {props.locale === "zh" ? "中文" : "英文"}
+              </button> */}
+            </span>
             <img
               src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551624718911&di=4a7004f8d71bd8da84d4eadf1b59e689&imgtype=0&src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg"
               alt=""
@@ -50,6 +61,9 @@ function IndexPage(props) {
             <Route path="/questions/view" component={ViewQuestions} />
             <Route path="/questions/addUser" component={AddUser} />
             <Route path="/questions/showUser" component={ShowUser} />
+            <Route path="/questions/ClassManage" component={ClassManage} />
+            <Route path="/questions/ClassroomManage" component={ClassroomManage} />
+            <Route path="/questions/StudentsManage" component={StudentsManage} />
           </Switch>
           {props.loading ? (
             <div className="loading">
@@ -58,7 +72,6 @@ function IndexPage(props) {
           ) : null}
         </Content>
       </Layout>
-    
     </Layout>
   );
 }
@@ -66,7 +79,22 @@ function IndexPage(props) {
 const mapStateToProps = state => {
   console.log("state..", state);
   return {
-    loading: state.loading.global
+    loading: state.loading.global,
+    locale: state.global.locale
   };
 };
-export default connect(mapStateToProps)(IndexPage);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeLocal: payload => {
+      dispatch({
+        type: "global/changeLocale",
+        payload
+      });
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(IndexPage);

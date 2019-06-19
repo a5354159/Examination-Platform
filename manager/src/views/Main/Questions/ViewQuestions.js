@@ -158,16 +158,16 @@ const MapState = state => {
   return {
     ...state.question,
     ...state.examlist,
-    ...state.examtypes,
+    // ...state.examtypes,
   }
 }
 const MapDispatch = dispatch => ({
   //获取所有考试类型
   examType() {
     // console.log('222')
-    // dispatch({
-    //   type: "user/getSubject",
-    // })
+    dispatch({
+      type: "user/getSubject",
+    })
   },
   //获取所有课程类型
   getAllCourse() {
@@ -182,10 +182,10 @@ const MapDispatch = dispatch => ({
   //   })
   // },//1
   getAllExam() {
-    dispatch({
-      // type: "examlist/AllSubject"
-      type:'examlist/ExamType'
-    })
+    // dispatch({
+    //   // type: "examlist/AllSubject"
+    //   type:'examlist/ExamType'
+    // })
   },
   
   // //所有题目类型

@@ -11,9 +11,11 @@ import ViewQuestions from "@/views/Main/Questions/ViewQuestions";
 import InsertQustions from "@/views/Main/Questions/InsertQustions";
 import AddUser from "@/views/Main/User_Management/AddUser";
 import ShowUser from "@/views/Main/User_Management/ShowUser";
-import ClassManage from '@/views/Main/Class_Manage'
-import ClassroomManage from '@/views/Main/Class_Manage/ClassroomManage.js'
-import StudentsManage from '@/views/Main/Class_Manage/StudentsManage.js'
+import ClassManage from "@/views/Main/Class_Manage";
+import ClassroomManage from "@/views/Main/Class_Manage/ClassroomManage.js";
+import StudentsManage from "@/views/Main/Class_Manage/StudentsManage.js";
+import MarkingManage from "@/views/Main/MarkingManage/index";
+
 const { Header, Content, Sider } = Layout;
 
 function IndexPage(props) {
@@ -62,8 +64,15 @@ function IndexPage(props) {
             <Route path="/questions/addUser" component={AddUser} />
             <Route path="/questions/showUser" component={ShowUser} />
             <Route path="/questions/ClassManage" component={ClassManage} />
-            <Route path="/questions/ClassroomManage" component={ClassroomManage} />
-            <Route path="/questions/StudentsManage" component={StudentsManage} />
+            <Route
+              path="/questions/ClassroomManage"
+              component={ClassroomManage}
+            />
+            <Route
+              path="/questions/StudentsManage"
+              component={StudentsManage}
+            />
+            <Route path="/questions/MarkingManage" component={MarkingManage} />
           </Switch>
           {props.loading ? (
             <div className="loading">

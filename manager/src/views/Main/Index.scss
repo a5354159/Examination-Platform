@@ -1,4 +1,9 @@
 :global {
+  .content{
+    width: 100% ;
+    padding:  20px;
+    box-sizing: border-box;
+  }
   .container {
     height: 100%;
   }
@@ -31,6 +36,9 @@
   }
   .header_box > div:nth-child(2) {
     color: #333;
+  }
+  .ant-layout-sider{
+    overflow: auto;
   }
   .header_box > div:nth-child(2) > span {
     height: 64px;

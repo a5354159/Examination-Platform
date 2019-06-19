@@ -73,6 +73,19 @@ function MenuComp(props) {
           <Link to="/questions/StudentsManage">学生管理</Link>
         </Menu.Item>
       </SubMenu>
+      <SubMenu
+        key="Marking"
+        title={
+          <span>
+            <Icon type="solution" />
+            阅卷管理
+          </span>
+        }
+      >
+        <Menu.Item key="11">
+          <Link to="/questions/MarkingManage">待批班级</Link>
+        </Menu.Item>
+      </SubMenu>
     </Menu>
   );
 }

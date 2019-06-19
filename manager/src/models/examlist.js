@@ -23,7 +23,7 @@ export default {
       //试卷列表
       // console.log('aaa')
       let data = yield call(getexamlist);
-      // console.log(data)
+      console.log('aaaa',data)
       if (data.code === 1) {
         yield put({
           type: "save",

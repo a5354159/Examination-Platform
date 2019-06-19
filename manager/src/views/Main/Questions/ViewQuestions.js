@@ -37,7 +37,7 @@ const columns = [
 function Look(props) {
   const { getFieldDecorator } = props.form
   const {getExamClass} =props
-  const { examType, questions_type, subjectType, allQuestion } = props;
+  const { examType, questions_type, subjectType, allQuestion ,getAllSubject} = props;
   let [ind, updataInd] = useState(-1)
   useEffect(() => {
     examType();
@@ -89,7 +89,8 @@ function Look(props) {
               <div>
                 <Tag color={ind === -1 ? "blue" : null} onClick={() => updataInd(-1)}>All</Tag>
                 {
-                  subjectType.map((item, index) => (
+                  // getAllSubject subjectType
+                  getAllSubject&&getAllSubject.map((item, index) => (
                     <Tag onClick={() => updataInd(index)} color={ind === index ? "blue" : null} className={style.tag} key={item.subject_id}>{item.subject_text}</Tag>
                   ))
                 }
@@ -155,7 +156,8 @@ function Look(props) {
 const MapState = state => {
   console.log(state)
   return {
-    ...state.question
+    ...state.question,
+    ...state.examlist
   }
 }
 const MapDispatch = dispatch => ({
@@ -173,11 +175,17 @@ const MapDispatch = dispatch => ({
     // })
   },
   // //所有题目
+  // getAllExam() {
+  //   dispatch({
+  //     type: "question/getAllquestion"
+  //   })
+  // },//1
   getAllExam() {
-    // dispatch({
-    //   type: "question/getAllquestion"
-    // })
+    dispatch({
+      type: "examlist/AllSubject"
+    })
   },
+  
   // //所有题目类型
   getCourseClass() {
     // dispatch({

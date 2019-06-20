@@ -1,4 +1,4 @@
-
+import {getQuestionsTypesss} from "@/services";
 export default {
   // 命名空间
   namespace: 'example',
@@ -16,6 +16,18 @@ export default {
     *fetch({ payload }, { call, put }) {  // eslint-disable-line
       yield put({ type: 'save' });
     },
+    *getQuestionsTypesss({ payload }, { call, put }){
+      let data = yield call(getQuestionsTypesss);
+
+      if (data.code === 1) {
+        yield put({
+          type: "save",
+          payload: {
+            getQuestionsTypesss: data.data
+          }
+        });
+      }
+    }
   },
 
   // 同步操作

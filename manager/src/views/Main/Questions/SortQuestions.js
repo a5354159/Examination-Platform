@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Input, Table } from 'antd';
+import AddStyle from "./AddStyle.scss";
 import { connect } from 'dva';
 const columns = [
     {
@@ -51,8 +52,11 @@ class Type extends Component {
     }
     render() {
         return (
-            <div className="content">
-                <h2>考试分类</h2>
+            // <div className="content">
+            <div className='wrap'>
+
+<div className='box'>
+                <h2 style={{ padding: '20px 0px', marginTop: "10px" }}>考试分类</h2>
                 <div className="el_conent">
                     <Button type="primary" onClick={this.showModal}>
                         + 添加类型
@@ -66,6 +70,7 @@ class Type extends Component {
                     </Modal>
                     <Table rowSelection={rowSelection} columns={columns} dataSource={this.props.exo.data} />
                 </div>
+            </div>
             </div>
         );
     }

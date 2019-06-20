@@ -20,7 +20,7 @@ const mapStateToProps = state => {
     locale: state.global.locale
   };
 };
-const RouterView = connect(mapStateToProps)(({ locale,history }) => {
+const RouterView = connect(mapStateToProps)(({ locale, history }) => {
   return (
     <IntlProvider locale={locale} messages={localMap[locale]}>
       <Router history={history}>

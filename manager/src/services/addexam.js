@@ -1,15 +1,29 @@
-import {getRequest,request} from '../utils/request';
+// // import {getRequest,request} from '../utils/request';
+import request from '../utils/request'
+// console.log(request)
 
+// 获取所有考试试卷列表
+export function getexamlist(){
+  return request({
+    url: '/exam/exam'
+  })
+}
 
-// // login, userInfo, getUserId, getData, userAdd,editAdd,apiAdd,getAddViews,setAddViews,getApiData,getApiView,getApiViewStatus,upDateUserId
-// import request from '@/utils/request'
-// // 获取所有试题
-// export function getAllquestion(){
-//   return request({
-//     url: '/exam/questions/new'
-//   })
-// }
+//考试类型
+export function getaExamType(){
+	return request({
+		url:'/exam/examType',
+		method:'GET',
+	})
+}
 
+//all考试类型
+export function getAllSubject(){
+	return request({
+		url:'/exam/subject',
+		method:'GET',
+	})
+}
 // // 获取所有的类型试题
 // export function getQuestionsType(){
 //   return request({
@@ -18,20 +32,20 @@ import {getRequest,request} from '../utils/request';
 // }
 
 // //考试类型 v
-export function ExamTypes(){
-	return request({
-		url:'exam/examType',
-		method:'GET',
-	})
-}
+// export function getExamType(){
+// 	return request({
+// 		url:'exam/examType',
+// 		method:'GET',
+// 	})
+// }
 
 // //获取所有的课程v
-export function getSubject(){
-	return request({
-		url:'/exam/subject',
-		method:'GET',
-	})
-}
+// export function getSubject(){
+// 	return request({
+// 		url:'/exam/subject',
+// 		method:'GET',
+// 	})
+// }
 
 
 // //添加试题接口	/exam/questions POST

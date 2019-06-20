@@ -1,13 +1,25 @@
-import React from "react";
-import { Layout, Spin } from "antd";
-import { Route, Switch, Redirect } from "dva/router";
-import Menu from "@/components/Menu";
+import React, { useEffect, useState } from "react";
+import { Layout, Spin, Dropdown } from "antd";
+import { Route, Switch, Redirect, Menu } from "dva/router";
+import Menus from "@/components/Menu";
 import styles from "./Index.scss";
 import { connect } from "dva";
 
 // 引入路由
 import SortQuestions from "@/views/Main/Questions/SortQuestions";
 import ViewQuestions from "@/views/Main/Questions/ViewQuestions";
+import AddQuestions from "@/views/Main/Questions/AddQuestions";
+import Detail from "./Questions/detal/index";
+import Edit from "./Questions/Edit";
+
+//用户管理
+import Adduser from "./user/Adduser/index";
+
+//考试列表
+import AddExam from "./Exam/AddExam/index";
+import ExamList from "./Exam/ExamList/index";
+import Alise from "./Exam/AddExam/Alise/index";
+// const { SubMenu } = Menu;
 import InsertQustions from "@/views/Main/Questions/InsertQustions";
 import AddUser from "@/views/Main/User_Management/AddUser";
 import ShowUser from "@/views/Main/User_Management/ShowUser";
@@ -17,7 +29,23 @@ import StudentsManage from "@/views/Main/Class_Manage/StudentsManage.js";
 import MarkingManage from "@/views/Main/MarkingManage/index";
 
 const { Header, Content, Sider } = Layout;
-
+var visible = false;
+const menu = e => (
+  <Menu>
+    <Menu.Item key="1">个人中心</Menu.Item>
+    <Menu.Item key="2">我的班级</Menu.Item>
+    <Menu.Item key="3">设置</Menu.Item>
+    <Menu.Item key="4">退出</Menu.Item>
+  </Menu>
+);
+let handleMenuClick = e => {
+  // if (e.key === '4') {
+  // this.setState({
+  visible = false;
+  //  });
+  console.log("asdf");
+  // }
+};
 function IndexPage(props) {
   console.log(props);
   return (
@@ -50,16 +78,26 @@ function IndexPage(props) {
       </Header>
       <Layout>
         <Sider>
-          <Menu />
+          <Menus />
         </Sider>
         <Content>
           <Switch>
             <Redirect exact from="/" to="/questions/add" />
             <Route path="/questions/add" component={InsertQustions} />
             <Route path="/questions/type" component={SortQuestions} />
+            {/* <Route path="/questions/add" component={AddQuestions} />
+            <Route path="/questions/type" component={SortQuestions} /> */}
             <Route path="/questions/view" component={ViewQuestions} />
-            <Route path="/questions/addUser" component={AddUser} />
-            <Route path="/questions/showUser" component={ShowUser} />
+            <Route path="/questions/detail" component={Detail} />
+            <Route path="/edit/questions" component={Edit} />
+            {/* 用户管理 */}
+            <Route path="/user/adduser" component={Adduser} />
+            <Route path="/user/showUser" component={ShowUser} />
+            <Route path="/exam/examList/detal" component={Alise} />
+            {/* 考试管理 */}
+            <Route path="/exam/addExam" component={AddExam} />
+            <Route path="/exam/examList" component={ExamList} />
+            {/* 班级管理 */}
             <Route path="/questions/ClassManage" component={ClassManage} />
             <Route
               path="/questions/ClassroomManage"

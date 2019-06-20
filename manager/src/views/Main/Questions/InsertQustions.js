@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Input, Select, Button, Modal } from 'antd';
 import Editor from 'for-editor'
+import AddStyle from "./AddStyle.scss";
 import { connect } from 'dva';
 const { Option } = Select;
 const confirm = Modal.confirm;
@@ -29,7 +30,10 @@ class Add extends Component {
         let { value, value1, detail, subject, getQuestionsType } = this.state
         console.log(value)
         return (
-            <div className="content">
+            <div className='wrap'>
+
+      <div className='box'>
+            {/* <div className="content"> */}
                 <h2 style={{ padding: '20px 0px', marginTop: "10px" }}>添加试题</h2>
                 <div className="el_conent">
                     <p>题目信息</p>
@@ -76,6 +80,7 @@ class Add extends Component {
                     <Editor value={value} onChange={this.handleChange.bind(this)} />
                     <Button type="primary" size='large' style={{ margin: '20px 0' }} onClick={this.btn.bind(this)}>提交</Button>
                 </div>
+            </div>
             </div>
         )
     }

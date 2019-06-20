@@ -108,6 +108,7 @@ function IndexPage(props) {
               component={StudentsManage}
             />
             <Route path="/questions/MarkingManage" component={MarkingManage} />
+            <Redirect to="/404" />
           </Switch>
           {props.loading ? (
             <div className="loading">

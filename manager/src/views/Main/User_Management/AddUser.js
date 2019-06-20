@@ -9,9 +9,9 @@ import {
   Button,
   Tabs
 } from "antd";
-import { Link, Route, Switch, Redirect } from "dva/router";
+// import { Link, Route, Switch, Redirect } from "dva/router";
 import style from "./AddUser.scss";
-import { Add } from "../../../components/User/add";
+// import { Add } from "../../../components/User/add";
 // import  Updata  from "../../../components/User/updata";
 const { Content } = Layout;
 const { Option } = Select;

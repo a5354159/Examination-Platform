@@ -12,7 +12,19 @@ export function login(params) {
     data: params
   });
 }
+// 获取用户信息
+export function getUserInfo() {
+  return request({
+    url: "/user/userInfo"
+  });
+}
 
+// 获取用户权限
+export function getViewAuthority(user_id) {
+  return request({
+    url: "/user/new?user_id=" + user_id
+  });
+}
 export function exam(params) {
   return request({
     data: params,
@@ -20,9 +32,15 @@ export function exam(params) {
     method: "GET"
   });
 }
-export function examadd(params) {
+export function Examadds(params) {
+  console.log(params)
   return request({
-    url: `/exam/insertQuestionsType?text=${params.text}&sort=${params.sort}`
+    url: `/exam/insertQuestionsType?text=${params.text}&sort=${params.sort}`,
+    method: "GET"
+    // data: {
+    //   'text': params.text,
+    //   'sort': params.sort
+    // }
   });
 }
 // 获取用户信息

@@ -1,10 +1,24 @@
-import {login, userInfo, getUserId, getData, userAdd,editAdd,apiAdd,getAddViews,setAddViews,getApiData,getApiView,getApiViewStatus,upDateUserId} from '@/services/index'
-import {setToken, getToken} from '@/utils/user'
-import { routerRedux } from 'dva/router';
-import { message } from 'antd';
+import {
+  login,
+  userInfo,
+  getUserId,
+  getData,
+  userAdd,
+  editAdd,
+  apiAdd,
+  getAddViews,
+  setAddViews,
+  getApiData,
+  getApiView,
+  getApiViewStatus,
+  upDateUserId,
+  // examadd
+} from "@/services/index";
+import { setToken, getToken } from "@/utils/user";
+import { routerRedux } from "dva/router";
+import { message } from "antd";
 
 import {
-  
   type,
   view,
   showuser,
@@ -22,11 +36,11 @@ export default {
   state: {
     isLogin: 0,
     userInfoData: {},
-    getUserIDs:[],
-    getUserDatas:[],
-    addUserCode:0,
-    viewData:[],
-    getApiViewData:[],
+    getUserIDs: [],
+    getUserDatas: [],
+    addUserCode: 0,
+    viewData: [],
+    getApiViewData: [],
     exo: [],
     view: "",
     Suser: [],
@@ -34,7 +48,7 @@ export default {
     Suser3: [],
     Suser4: [],
     Suser5: [],
-    Suser6:[]
+    Suser6: []
   },
   //订阅路由跳转
   subscriptions: {
@@ -78,92 +92,100 @@ export default {
         setToken(data.token);
       }
       yield put({
-        type: 'updateLogin',
-        payload: data.code === 1?1:-1
-      })
+        type: "updateLogin",
+        payload: data.code === 1 ? 1 : -1
+      });
     },
 
-    *userInfo({payload},{call,put}){
+    *userInfo({ payload }, { call, put }) {
       let data = yield call(userInfo);
       console.log(data);
       yield put({
-          type: 'getUserInfo',
-          action: data.data
+        type: "getUserInfo",
+        action: data.data
       });
-  },
-    *userID({payload},{call,put}){
+    },
+    *userID({ payload }, { call, put }) {
       let data = yield call(getUserId);
       yield put({
-          type:'getUserID',
-          action:data.data
-      })
-  },
-  *userData({payload},{call,put}){
-      let data = yield call(getData)
-      console.log(data.data)
+        type: "getUserID",
+        action: data.data
+      });
+    },
+    *userData({ payload }, { call, put }) {
+      let data = yield call(getData);
+      console.log(data.data);
       yield put({
-          type:'getUserData',
-          action:data.data
-      })
-  },
-  *addUsers({payload},{call,put}){
-      let data = yield call(userAdd,payload)
-      data.code===1?message.success(data.msg):message.error(data.msg)
-  },
-  *editData({payload},{call,put}){
-      let data = yield call(editAdd,payload)
-      data.code===1?message.success(data.msg):message.error(data.msg)
-  },
-  *ApiData({payload},{call,put}){
-      let data = yield call(apiAdd,payload)
-      data.code===1?message.success(data.msg):message.error(data.msg)
-  },
-  *getView({payload},{call,put}){
-      let data = yield call(getAddViews)
+        type: "getUserData",
+        action: data.data
+      });
+    },
+    *addUsers({ payload }, { call, put }) {
+      let data = yield call(userAdd, payload);
+      data.code === 1 ? message.success(data.msg) : message.error(data.msg);
+    },
+    *editData({ payload }, { call, put }) {
+      let data = yield call(editAdd, payload);
+      data.code === 1 ? message.success(data.msg) : message.error(data.msg);
+    },
+    *ApiData({ payload }, { call, put }) {
+      let data = yield call(apiAdd, payload);
+      data.code === 1 ? message.success(data.msg) : message.error(data.msg);
+    },
+    *getView({ payload }, { call, put }) {
+      let data = yield call(getAddViews);
       yield put({
-          type:'getViews',
-          action:data.data
-      })
-  },
-  *addViews({payload},{call,put}){
-      let data = yield call(setAddViews,payload)
-      data.code===1?message.success(data.msg):message.error(data.msg)
-  },
-  *getApiViews({payload},{call,put}){
-      let data = yield call(getApiData)
-      console.log(data)
+        type: "getViews",
+        action: data.data
+      });
+    },
+    *addViews({ payload }, { call, put }) {
+      let data = yield call(setAddViews, payload);
+      data.code === 1 ? message.success(data.msg) : message.error(data.msg);
+    },
+    *getApiViews({ payload }, { call, put }) {
+      let data = yield call(getApiData);
+      console.log(data);
       yield put({
-          type:'getApiViewS',
-          action:data.data
-      })
-  },
-  *getApiViewData({payload},{call,put}){
-      let data=yield call(getApiView,payload)
-      data.code===1?message.success(data.msg):message.error(data.msg)
-  },
-  *getApiStatus({payload},{call,put}){
-      let data=yield call(getApiViewStatus,payload)
-      console.log(data)
-      data.code===1?message.success(data.msg):message.error(data.msg)
-  },
-  *upDataUser({payload},{call,put}){
-      let data=yield call(upDateUserId,payload)
-      console.log(data)
-      data.code===1?message.success(data.msg):message.error(data.msg)
-  },
+        type: "getApiViewS",
+        action: data.data
+      });
+    },
+    *getApiViewData({ payload }, { call, put }) {
+      let data = yield call(getApiView, payload);
+      data.code === 1 ? message.success(data.msg) : message.error(data.msg);
+    },
+    *getApiStatus({ payload }, { call, put }) {
+      let data = yield call(getApiViewStatus, payload);
+      console.l;
+      data.code === 1 ? message.success(data.msg) : message.error(data.msg);
+    },
+    *upDataUser({ payload }, { call, put }) {
+      let data = yield call(upDateUserId, payload);
+      console.log(data);
+      data.code === 1 ? message.success(data.msg) : message.error(data.msg);
+    },
     //     type: "updateLogin",
     //     payload: data.code === 1 ? 1 : -1
     //   });
     // },
     *type({ payload }, { call, put }) {
       let exo = yield call(type);
-      console.log(type)
+      console.log(type);
       yield put({
         type: "exo",
         payload: exo.data
       });
       console.log("exo...", exo);
+     
     },
+    // *insertTypes({payload},{call,put}){
+    //   let Datasuccess = yield call(examadd,payload);
+    //   console.log('添加成功.....',Datasuccess);
+    //   yield put({
+    //     type: "insertType"
+    //   });
+    // },
     *view({ payload }, { call, put }) {
       let vie = yield call(view);
       yield put({
@@ -184,7 +206,7 @@ export default {
       //展示身份和视图权限关系
       let datas5 = yield call(view_authority);
       //展示视图权限关系
-      let datas6 = yield call(authorityView,payload)
+      let datas6 = yield call(authorityView, payload);
       console.log("展示用户数据.......", datas);
       console.log("展示身份和api权限关系.......", datas2);
       console.log("展示身份数据.......", datas3);
@@ -217,55 +239,50 @@ export default {
       });
       // console.log('showuser...',showuser)
     },
-    *addusers({ payload }, { call, put }){
-
-    }
+    *addusers({ payload }, { call, put }) {}
   },
 
   // 同步操作
   reducers: {
-    updateLogin(state, {payload}){
-      return {...state, isLogin: payload}
+    updateLogin(state, { payload }) {
+      return { ...state, isLogin: payload };
     },
-
-
-
-    save(state, {action}) {
+    save(state, { action }) {
       return {
-          ...state,
-          isLogin: action
+        ...state,
+        isLogin: action
       };
-  },
-  getUserInfo(state, {action}){
+    },
+    getUserInfo(state, { action }) {
       return {
-          ...state,
-          userInfoData: action
+        ...state,
+        userInfoData: action
       };
-  },
-  getUserID(state,{action}){
+    },
+    getUserID(state, { action }) {
       return {
-          ...state,
-          getUserIDs:action
-      }
-  },
-  getUserData(state,{action}){
+        ...state,
+        getUserIDs: action
+      };
+    },
+    getUserData(state, { action }) {
       return {
-          ...state,
-          getUserDatas:action
-      }
-  },
-  getViews(state,{action}){
+        ...state,
+        getUserDatas: action
+      };
+    },
+    getViews(state, { action }) {
       return {
-          ...state,
-          viewData:action
-      }
-  },
-  getApiViewS(state,{action}){
+        ...state,
+        viewData: action
+      };
+    },
+    getApiViewS(state, { action }) {
       return {
-          ...state,
-          getApiViewData:action
-      }
-  },
+        ...state,
+        getApiViewData: action
+      };
+    },
     updateLogin(state, { payload }) {
       return { ...state, isLogin: payload };
     },
@@ -278,19 +295,19 @@ export default {
     showuserA(state, { payload }) {
       return { ...state, Suser: payload };
     },
-    authority_relations(state,{payload}){
+    authority_relations(state, { payload }) {
       return { ...state, Suser2: payload };
     },
-    identity(state,{payload}){
+    identity(state, { payload }) {
       return { ...state, Suser3: payload };
     },
-    api_authority(state,{payload}){
+    api_authority(state, { payload }) {
       return { ...state, Suser4: payload };
     },
-    view_authority(state,{payload}){
+    view_authority(state, { payload }) {
       return { ...state, Suser5: payload };
     },
-    authorityView(state,{payload}){
+    authorityView(state, { payload }) {
       return { ...state, Suser6: payload };
     }
   }

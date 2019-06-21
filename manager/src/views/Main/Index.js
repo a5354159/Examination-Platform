@@ -12,7 +12,7 @@ import AddQuestions from "@/views/Main/Questions/AddQuestions";
 import Detail from "./Questions/detal/index";
 import Edit from "./Questions/Edit";
 
-//用户管理
+// //用户管理
 import Adduser from "./user/Adduser/index";
 
 //考试列表
@@ -51,12 +51,6 @@ function IndexPage(props) {
   return (
     <Layout className="container">
       <Header>
-        {/* <span
-          className="lang"
-          onClick={() => props.changeLocal(props.locale === "zh" ? "en" : "zh")}
-        >
-          {props.locale === "zh" ? "英文" : "中文"}
-        </span> */}
         <div className="header_box">
           <div>
             <img
@@ -72,6 +66,12 @@ function IndexPage(props) {
                 alt=""
               />
               <b>chenmanjie</b>
+               <span
+          className="lang"
+          onClick={() => props.changeLocal(props.locale === "zh" ? "en" : "zh")}
+        >
+          {props.locale === "zh" ? "英文" : "中文"}
+        </span>
             </span>
           </div>
         </div>
@@ -85,8 +85,8 @@ function IndexPage(props) {
             <Redirect exact from="/" to="/questions/add" />
             <Route path="/questions/add" component={InsertQustions} />
             <Route path="/questions/type" component={SortQuestions} />
-            {/* <Route path="/questions/add" component={AddQuestions} />
-            <Route path="/questions/type" component={SortQuestions} /> */}
+            <Route path="/questions/add" component={AddQuestions} />
+            <Route path="/questions/type" component={SortQuestions} />
             <Route path="/questions/view" component={ViewQuestions} />
             <Route path="/questions/detail" component={Detail} />
             <Route path="/edit/questions" component={Edit} />
@@ -94,15 +94,15 @@ function IndexPage(props) {
             <Route path="/user/adduser" component={Adduser} />
             <Route path="/user/showUser" component={ShowUser} />
             <Route path="/exam/examList/detal" component={Alise} />
-            {/* 考试管理 */}
-            <Route path="/exam/addExam" component={AddExam} />
+           {/* 考试管理 */}
+              <Route path="/exam/addExam" component={AddExam} />
             <Route path="/exam/examList" component={ExamList} />
             {/* 班级管理 */}
-            <Route path="/questions/ClassManage" component={ClassManage} />
+             <Route path="/questions/ClassManage" component={ClassManage} />
             <Route
               path="/questions/ClassroomManage"
               component={ClassroomManage}
-            />
+            />  
             <Route
               path="/questions/StudentsManage"
               component={StudentsManage}

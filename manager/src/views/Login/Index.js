@@ -102,7 +102,7 @@ LoginPage.defaultProps = {};
 
 const mapStateToProps = state => {
   return {
-    ...state.user
+    ...state.users
   };
 };
 
@@ -110,7 +110,7 @@ const mapDisaptchToProps = dispatch => {
   return {
     login(payload) {
       dispatch({
-        type: "user/login",
+        type: "users/login",
         payload
       });
     }

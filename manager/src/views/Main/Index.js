@@ -65,7 +65,6 @@ function IndexPage(props) {
               alt=""
             />
           </div>
-
           <div>
             <span>
               <img
@@ -99,9 +98,9 @@ function IndexPage(props) {
             <Route path="/exam/addExam" component={AddExam} />
             <Route path="/exam/examList" component={ExamList} />
             {/* 班级管理 */}
-            <Route path="/questions/ClassManage" component={ClassManage} />
+            {/* <Route path="/questions/ClassManage" component={ClassManage} />
             <Route path="/questions/ClassroomManage" component={ClassroomManage} />
-            <Route path="/questions/StudentsManage" component={StudentsManage} />
+            <Route path="/questions/StudentsManage" component={StudentsManage} /> */}
           </Switch>
           {props.loading ? (
             <div className="loading">

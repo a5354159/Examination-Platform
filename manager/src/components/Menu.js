@@ -14,7 +14,7 @@ function MenuComp(props) {
       mode="inline"
       defaultSelectedKeys={["1"]}
       defaultOpenKeys={["questions"]}
-      style={{ height: "100%", borderRight: 0 }}
+      style={{ height: "100%", borderRight: 0 ,overflowY:'auto'}}
     >
       <SubMenu
         key="questions"

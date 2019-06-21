@@ -50,7 +50,7 @@ class Add extends Component {
                     <div>
                         <Select defaultValue='周考二' style={{ width: 120 }} onChange={this.select1.bind(this)}>
                             {
-                                detail.map((el, i) => {
+                                detail&&detail.map((el, i) => {
                                     return <Option key={i} value={el.exam_name}>{el.exam_name}</Option>
                                 })
                             }

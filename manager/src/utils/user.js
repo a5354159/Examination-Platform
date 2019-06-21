@@ -1,21 +1,14 @@
-import Cookie from "js-cookie";
+import Cookie from 'js-cookie';
 
-const key = "authorization";
-//获取
-export function getToken() {
-  return Cookie.get(key);
-}
-//设置
-export function setToken(value) {
-  Cookie.set(key, value, { expires: 7 });
+const key = 'authorization';
+
+// 获取token
+export function getToken(){
+    return Cookie.get(key);
 }
 
-const UserData = "UserData";
-//获取UserData
-// export const getUserData = () => {
-//   const data = Cookie.get(UserData);
-//   return data ? JSON.parse(data) : "";
-// };
-
-//设置UserData
-export const setUserData = value => Cookie.set(UserData, value, { expires: 7 });
+// 设置token
+export function setToken(val){
+    // expires 设置有效期7天
+    Cookie.set(key, val, { expires: 7 })
+}

@@ -1,166 +1,96 @@
-import React from "react";
-import { Menu, Icon } from "antd";
-import { Link } from "dva/router";
+import React from 'react';
+import { Menu, Icon, Layout  } from 'antd';
+import { Link } from 'dva/router';
+//添加国际划
+import { injectIntl } from 'react-intl'
+const MenuView = (props) => {
+    console.log(props.intl)
+    const { SubMenu }  = Menu;
+    const { Sider } = Layout;
+    return (
+    <Sider style={{overflow: 'auto', height: '100%',left: 0, width:'100%'}}>
+        <Menu theme="dark"
+            defaultOpenKeys={['sub1']}
+            mode="inline">
+            <SubMenu
+                key="sub1"
+                title={
+                <span>
+                    <Icon type="project" />
+                    <span>{props.intl.formatMessage({id:'router.questions'})}</span>
+                </span>}>
+                <Menu.Item key="1">
+                    <Link to="/questions/add">{props.intl.formatMessage({id:'router.questions.add'})}</Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                    <Link to="/questions/type">{props.intl.formatMessage({id:'router.qusetions.Type'})}</Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                    <Link to="/questions/See">{props.intl.formatMessage({id:'router.questions.List'})}</Link>
+                </Menu.Item>
+            </SubMenu>
+            <SubMenu
+                key="sub2"
+                title={
+                <span>
+                    <Icon type="user" />
+                    <span>用户管理</span>
+                </span>}>
+                <Menu.Item key="4">
+                    <Link to="/user/add">添加用户</Link>
+                </Menu.Item>
+                <Menu.Item key="5">
+                    <Link to="/user/see">用户展示</Link>
+                </Menu.Item>
+            </SubMenu>
+            <SubMenu
+                key="sub3"
+                title={
+                <span>
+                    <Icon type="setting" />
+                    <span>考试管理</span>
+                </span>}>
+                <Menu.Item key="6">
+                    <Link to="/exam/add">添加考试</Link>
+                </Menu.Item>
+                <Menu.Item key="7">
+                    <Link to="/exam/list">试卷列表</Link>
+                </Menu.Item>
+            </SubMenu>
+            <SubMenu
+                key="sub4"
+                title={
+                <span>
+                    <Icon type="desktop" />
+                    <span>班级管理</span>
+                </span>}>
+                <Menu.Item key="8">
+                    <Link to="/class/management">班级管理</Link>
+                </Menu.Item>
+                <Menu.Item key="9">
+                    <Link to="/class/classroom">教室管理</Link>
+                </Menu.Item>
+                <Menu.Item key="10">
+                    <Link to="/class/student">学生管理</Link>
+                </Menu.Item>
+            </SubMenu>
+            <SubMenu
+                key="sub5"
+                title={
+                <span>
+                    <Icon type="appstore" />
+                    <span>阅卷管理</span>
+                </span>}>
+                <Menu.Item key="11">    
+                    <Link to="/class/special">特批班级</Link>
+                </Menu.Item>
+            </SubMenu>
+        </Menu>
+    </Sider>
+    );
+};
 
-//国际化
-import { injectIntl } from "react-intl";
+MenuView.propTypes = {
+};
 
-const { SubMenu } = Menu;
-
-function MenuComp(props) {
-  return (
-    <Menu
-      theme="dark"
-      mode="inline"
-      defaultSelectedKeys={["1"]}
-      defaultOpenKeys={["questions"]}
-      style={{ height: "100%", borderRight: 0 ,overflowY:'auto'}}
-    >
-      <SubMenu
-        key="questions"
-        title={
-          <span>
-            <Icon type="user" />
-            {props.intl.formatMessage({ id: "router.questions" })}
-          </span>
-        }
-      >
-        <Menu.Item key="1">
-          <Link to="/questions/add">
-            {props.intl.formatMessage({ id: "router.questions.add" })}
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="2">
-          <Link to="/questions/type">
-            {props.intl.formatMessage({ id: "router.questions.type" })}
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="3">
-          <Link to="/questions/view">
-            {props.intl.formatMessage({ id: "router.questions.view" })}
-          </Link>
-        </Menu.Item>
-      </SubMenu>
-      <SubMenu
-        key="user"
-        title={
-          <span>
-            <Icon type="user" />
-            用户管理
-          </span>
-        }
-      >
-        <Menu.Item key="4">
-          <Link to="/user/adduser">添加用户</Link>
-        </Menu.Item>
-        <Menu.Item key="5">
-          <Link to="/user/showuser">用户展示</Link>
-        </Menu.Item>
-      </SubMenu>
-      <SubMenu
-        key="exam"
-        title={
-          <span>
-            <Icon type="user" />
-            考试管理
-          </span>
-        }
-      >
-        <Menu.Item key="6">
-          <Link to="/exam/addExam">添加考试</Link>
-        </Menu.Item>
-        <Menu.Item key="7">
-          <Link to="/exam/examList">试卷列表</Link>
-        </Menu.Item>
-      </SubMenu>
-      <SubMenu
-        key="class"
-        title={
-          <span>
-            <Icon type="solution" />
-            班级管理
-          </span>
-        }
-      >
-        <Menu.Item key="8">
-          <Link to="/questions/ClassManage">班级管理</Link>
-        </Menu.Item>
-        <Menu.Item key="9">
-          <Link to="/questions/ClassroomManage">教室管理</Link>
-        </Menu.Item>
-        <Menu.Item key="10">
-          <Link to="/questions/StudentsManage">学生管理</Link>
-        </Menu.Item>
-      </SubMenu>
-      <SubMenu
-        key="Marking"
-        title={
-          <span>
-            <Icon type="solution" />
-            阅卷管理
-          </span>
-        }
-      >
-        <Menu.Item key="11">
-          <Link to="/questions/MarkingManage">待批班级</Link>
-        </Menu.Item>
-      </SubMenu>
-    </Menu>
-  );
-
-  // function MenuComp(props) {
-  //   return (
-  //     <Menu
-  //       theme="dark"
-  //       mode="inline"
-  //       defaultSelectedKeys={["1"]}
-  //       defaultOpenKeys={["questions"]}
-  //       style={{ height: "100%", borderRight: 0 }}
-  //     >
-  //       <SubMenu
-  //         key="questions"
-  //         title={
-  //           <span>
-  //             <Icon type="menu" />
-  //             {props.intl.formatMessage({ id: "router.questions" })}
-  //           </span>
-  //         }
-  //       >
-  //         <Menu.Item key="1">
-  //           <Link to="/questions/add">
-  //             {props.intl.formatMessage({ id: "router.questions.add" })}
-  //           </Link>
-  //         </Menu.Item>
-  //         <Menu.Item key="2">
-  //           <Link to="/questions/type">
-  //             {props.intl.formatMessage({ id: "router.questions.type" })}
-  //           </Link>
-  //         </Menu.Item>
-  //         <Menu.Item key="3">
-  //           <Link to="/questions/view">
-  //             {props.intl.formatMessage({ id: "router.questions.view" })}
-  //           </Link>
-  //         </Menu.Item>
-  //       </SubMenu>
-  //       <SubMenu
-  //         key="user"
-  //         title={
-  //           <span>
-  //             <Icon type="user" />
-  //             用户管理
-  //           </span>
-  //         }
-  //       >
-  //         <Menu.Item key="5">
-  //           <Link to="/questions/addUser">添加用户</Link>
-  //         </Menu.Item>
-  //         <Menu.Item key="6">
-  //           <Link to="/questions/showUser">用户展示</Link>
-  //         </Menu.Item>
-  //       </SubMenu>
-
-  //     </Menu>
-  //   );
-}
-
-export default injectIntl(MenuComp);
+export default injectIntl(MenuView);

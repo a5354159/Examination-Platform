@@ -1,0 +1,35 @@
+.wrap {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+}
+.mainTitle{
+	padding: 10px 0px; 
+	font-size: 1.5em;
+}
+.content {
+    width: 100%;
+    min-height: 200px;
+//   height: 100%;
+  background: rgb(255, 255, 255);
+//   margin: 0px 0px 20px;
+  border-radius: 10px;
+  padding: 24px;
+
+}
+.title {
+  width: 95%;
+  height: 80px;
+  margin: 0 auto;
+  font-size: 25px;
+  line-height: 80px;
+}
+.bottom {
+  width: 95%;
+  height: auto;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}

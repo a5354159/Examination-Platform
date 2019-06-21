@@ -1,68 +1,79 @@
-import {getRequest,request} from '../utils/request';
+import request from '../utils/request';
 
-
-// // login, userInfo, getUserId, getData, userAdd,editAdd,apiAdd,getAddViews,setAddViews,getApiData,getApiView,getApiViewStatus,upDateUserId
-// import request from '@/utils/request'
-// // 获取所有试题
-// export function getAllquestion(){
-//   return request({
-//     url: '/exam/questions/new'
-//   })
-// }
-
-// // 获取所有的类型试题
-// export function getQuestionsType(){
-//   return request({
-//     url: '/exam/getQuestionsType'
-//   })
-// }
-
-// //考试类型 v
-export function ExamTypes(){
-	return request({
-		url:'exam/examType',
-		method:'GET',
-	})
+// 添加试题
+export function add(params){
+    return request({
+        url:'/exam/questions',
+        method:'POST',
+        data: params
+    })
+}
+ 
+// 获取考试类型
+export function examType(){
+    return request({
+        url:'/exam/examType',
+        method:'GET'
+    })
 }
 
-// //获取所有的课程v
-export function getSubject(){
-	return request({
-		url:'/exam/subject',
-		method:'GET',
-	})
+// 获取课程类型
+export function subjectType(){
+    return request({
+        url:'/exam/subject',
+        method:'GET'
+    })
 }
 
+// 获取题目类型
+export function getQuestionsType(){
+    return request({
+        url:'/exam/getQuestionsType',
+        method:'GET'
+    })
+}
 
-// //添加试题接口	/exam/questions POST
-// export function addQuestions(params){
-// 	return request({
-// 		url:'/exam/questions',
-// 		method:'POST',
-// 		data:params
-// 	})
-// }
-// //添加试题类型接口 /exam/insertQuestionsType GET
-// // export function addQuestionsType(params){
-// // 	// console.log('service-addQuestionsType.params',params)
-// // 	return getRequest({
-// // 		url:'/exam/insertQuestionsType',
-// // 		params
-// // 	})
-// // }
-// // //查询接口
-// export function getClassQuery(params){
-// 	return request({
-// 		url:"/exam/questions/condition",
-// 		method:"GET",
-// 		params,
-// 	})
-// }
-// // //更新试题接口
-// export function updateQuestion(data){
-// 	return request({
-// 		url:"/exam/questions/update",
-// 		method:"PUT",
-// 		data
-// 	})
-// }
+// 按条件获取试题
+export function getQuestion(params){
+    return request({
+        url:'/exam/questions/condition',
+        method:'GET',
+        params: params
+    })
+}
+
+// 获取单个试题
+export function questionsOnly(params){
+    return request({
+        url:'/exam/questions/condition',
+        method:'GET',
+        params: params
+    })
+}
+
+// 更新试题
+export function questionsUpdate(params){
+    return request({
+        url:'/exam/questions/update',
+        method:'PUT',
+        data:params
+    })
+}
+
+// 添加考试
+export function examAdd(params){
+    return request({
+        url:'/exam/exam',
+        method:'POST',
+        data:params
+    })
+}
+
+// 获取试卷列表
+export function examList(params){
+    return request({
+        url:'/exam/exam',
+        method:'GET',
+        params
+    })
+}

@@ -41,6 +41,7 @@ html,body{
     display: flex;
     align-items: center;
     line-height: 65px;
+    justify-content: space-around;
 }
 .headerBottomList img{
     width: 32px;
@@ -65,4 +66,13 @@ html,body{
 }
 .main{
     position: relative;
+}
+.english{
+    padding: 10px 10px;
+    border:1px solid #ccc;
+    border-radius: 15px;
+    margin: 0 10px;
+    height: 20px;
+    display: flex;
+    align-items: center;
 }

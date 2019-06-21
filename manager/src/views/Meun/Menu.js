@@ -42,7 +42,7 @@ function ExaminationMenu(props){
                                 </a>
                             </Dropdown>
                         }
-                        <button onClick={()=>{props.changeLocal(props.locale==='zh'?'en':'zh')}}>{props.locale==='zh'?'英文':'中文'}</button>
+                        <p onClick={()=>{props.changeLocal(props.locale==='zh'?'en':'zh')}} className={styles.english}>{props.locale==='zh'?'英文':'中文'}</p>
                     </div>
                 </div>
                 

@@ -105,7 +105,7 @@ export default {
       }
     },
     //获取所有的试题类型
-    *getQuestionsType({ payload }, { call, put }) {
+    *getQuestionsTypes({ payload }, { call, put }) {
       let data = yield call(getQuestionsType);
       // console.log("getQuestionsType:", data);
       console.log("11111111111111111111",data);
@@ -132,7 +132,7 @@ export default {
     },
 
     //获取所有的试题
-    *getAllquestion({ payload }, { call, put }) {
+    *getquestion({ payload }, { call, put }) {
       let data = yield call(getAllquestion);
       if (data.code === 1) {
         yield put({

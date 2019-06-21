@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Input, Table } from 'antd';
-import AddStyle from "./AddStyle.scss";
+import  "./AddStyle.scss";
 import { connect } from 'dva';
 const columns = [
     {

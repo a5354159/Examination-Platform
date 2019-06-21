@@ -26,6 +26,7 @@ app.model(require('./models/questions').default);
 app.model(require('./models/examlist').default);
 // app.model(require('./models/example').default);
 app.model(require('./models/ClassMange').default);
+app.model(require('./models/Marking').default);
 
 // 4. Router
 app.router(require('./router').default);

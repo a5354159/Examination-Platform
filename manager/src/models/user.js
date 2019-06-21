@@ -157,9 +157,10 @@ export default {
     // },
     *type({ payload }, { call, put }) {
       let exo = yield call(type);
+      console.log(type)
       yield put({
         type: "exo",
-        payload: exo
+        payload: exo.data
       });
       console.log("exo...", exo);
     },

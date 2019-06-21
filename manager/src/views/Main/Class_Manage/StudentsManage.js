@@ -100,24 +100,32 @@ function StudentsManage(props) {
         >
           <div
             className="add"
-            style={{ width: "80px", height: "40px", padding: "20px 0",display:'flex'}}
+            style={{
+              width: "100%",
+              height: "40px",
+              padding: "40px 0",
+              display: "flex"
+            }}
           >
             <Form
               labelCol={{ span: 5 }}
               wrapperCol={{ span: 12 }}
               onSubmit={handleSubmit}
-              style={{display:'flex',justifyContent: 'space-around',}}
+              style={{ display: "flex", justifyContent: "space-around" }}
             >
               <Form.Item>
                 {getFieldDecorator("seach", {
                   rules: [{ required: true, message: "请输入姓名" }]
-                })(<Input />)}
+                })(<Input style={{ width: 120, }} />)}
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("classRoom", {
                   rules: [{ required: true, message: "请选择教室后操作" }]
                 })(
-                  <Select placeholder="请选择教室" style={{ width: 120 }}>
+                  <Select
+                    placeholder="请选择教室"
+                    style={{ width: 120, margin: "0 24px" }}
+                  >
                     <Option value="jack">Jack (100)</Option>
                     <Option value="lucy">Lucy (101)</Option>
                   </Select>

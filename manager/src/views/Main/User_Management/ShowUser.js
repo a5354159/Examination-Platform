@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "dva";
-import { Layout, Breadcrumb, Table, Tabs } from "antd";
+import {  Table, Tabs } from "antd";
 // import Updata from "../../../components/User/Updata";
-function onChange(e) {
-  console.log(`radio checked:${e.target.value}`);
-}
+// function onChange(e) {
+//   console.log(`radio checked:${e.target.value}`);
+// }
 function ShowUser(props) {
   let {showUsers} = props
   function callback(key) {

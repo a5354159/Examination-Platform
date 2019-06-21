@@ -3,7 +3,7 @@ import { connect } from "dva"
 import { Layout ,Tag} from 'antd';
 import Title from "@/components/Title"
 import styles from "./index.scss"
-import ReactMarkdown from 'react-markdown'
+// import ReactMarkdown from 'react-markdown'
 const { Content } = Layout;
 function Detail(props) {
     const {getDetailQuestion} =props
@@ -25,10 +25,10 @@ function Detail(props) {
             <Tag color="gold">{props.exam_name}</Tag>
           </h4>
           <h4>{props.title}</h4>
-            <ReactMarkdown className={styles['react-markdown']} source={props.questions_stem} />
+            {/* <ReactMarkdown className={styles['react-markdown']} source={props.questions_stem} /> */}
                 </Content>
                 <Content className={styles.content}>
-                <ReactMarkdown className={styles['react-markdown']} source={props.questions_answer} />
+                {/* <ReactMarkdown className={styles['react-markdown']} source={props.questions_answer} /> */}
                 </Content>
             </Content>
         </Layout>)

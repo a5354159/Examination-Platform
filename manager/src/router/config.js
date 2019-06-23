@@ -1,83 +1,63 @@
-// import Addeaxm from '../views/Exam/Questions/addExam';
-// import Viewexam from '../views/Exam/Questions/viewExam';
-// import Typeexam from '../views/Exam/Questions/typeExam';
-// import Adduser from '../views/Exam/Usermanagement/addUser';
-// import Viewuser from '../views/Exam/Usermanagement/viewUser';
-// import Addexams from '../views/Exam/Exammanagement/addExams';
-// import Examlist from '../views/Exam/Exammanagement/examList';
-// import Class from '../views/Exam/manageMent/classManagement';
-// import Classrooms from '../views/Exam/manageMent/classroomManagement';
-// import Student from '../views/Exam/manageMent/studentManagement';
-// import Classroom from '../views/Exam/Markmanagement/classRoom';
-// import Detailexam from '../views/Exam/Questions/detailExam';
 import dynamic from "dva/dynamic";
-//试题管理
-const Addeaxm = dynamic({
-  component: () => import("@/views/Exam/Questions/addExam")
+// 引入路由
+const SortQuestions = dynamic({
+  component: () => import("@/views/Main/Questions/SortQuestions")
 });
-const Viewexam = dynamic({
-  component: () => import("@/views/Exam/Questions/viewExam")
+const ViewQuestions = dynamic({
+  component: () => import("@/views/Main/Questions/ViewQuestions")
 });
-const Typeexam = dynamic({
-  component: () => import("@/views/Exam/Questions/typeExam")
+const AddQuestions = dynamic({
+  component: () => import("@/views/Main/Questions/AddQuestions")
 });
-//用户管理
 const Adduser = dynamic({
-  component: () => import("@/views/Exam/Usermanagement/addUser")
+  component: () => import("@/views/Main/user/Adduser")
 });
-const Viewuser = dynamic({
-  component: () => import("@/views/Exam/Usermanagement/viewUser")
+const ShowUser = dynamic({
+  component: () => import("@/views/Main/User_Management/ShowUser")
 });
-//考试管理
-const Addexams = dynamic({
-  component: () => import("@/views/Exam/Exammanagement/addExams")
+const ExamList = dynamic({
+  component: () => import("@/views/Main/Exam/ExamList/index")
 });
-const Examlist = dynamic({
-  component: () => import("@/views/Exam/Exammanagement/examList")
+const AddExam = dynamic({
+  component: () => import("@/views/Main/Exam/AddExam/index")
 });
-//班级管理
-const Class = dynamic({
-  component: () => import("@/views/Exam/manageMent/classManagement")
+const ClassManage = dynamic({
+  component: () => import("@/views/Main/Class_Manage/index")
 });
-const Classrooms = dynamic({
-  component: () => import("@/views/Exam/manageMent/classroomManagement")
+const ClassroomManage = dynamic({
+  component: () => import("@/views/Main/Class_Manage/ClassroomManage.js")
 });
-const Student = dynamic({
-  component: () => import("@/views/Exam/manageMent/studentManagement")
+const StudentsManage = dynamic({
+  component: () => import("@/views/Main/Class_Manage/StudentsManage.js")
 });
-//阅卷管理
-const Classroom = dynamic({
-  component: () => import("@/views/Exam/Markmanagement/classRoom")
+const MarkingManage = dynamic({
+  component: () => import("@/views/Main/MarkingManage/index")
 });
-const TabsFrom = dynamic({
-  component: () => import("@/views/Exam/Markmanagement/tabform")
-});
-
 export default {
   routes: [
     {
-      name: "router.exam",
+      name: "router.questions",
       children: [
         {
-          name: "router.exam.add",
-          key: 1,
+          name: "router.questions.add",
           id: "main-addQuestions",
           path: "/questions/add",
-          component: Addeaxm
+          component: AddQuestions,
+          key:0,
         },
         {
-          name: "router.exam.classify",
-          key: 2,
+          name: "router.questions.view",
           id: "main-watchQuestions",
           path: "/questions/view",
-          component: Typeexam
+          component: ViewQuestions,
+          key:1,
         },
         {
-          name: "router.exam.test",
+          name: "router.questions.type",
           id: "main-questionsType",
-          key: 3,
           path: "/questions/type",
-          component: Viewexam
+          component: SortQuestions,
+          key:2,
         }
       ]
     },
@@ -85,37 +65,37 @@ export default {
       name: "router.user",
       children: [
         {
-          name: "router.user.adduser",
-          id: "main-watchQuestions",
-          key: 4,
-          path: "/questions/adduser",
-          component: Adduser
+          name: "router.user.addUser",
+          id: "main-addUser",
+          path: "/user/addUser",
+          component: Adduser,
+          key:3,
         },
         {
           name: "router.user.show",
-          id: "main-questionsType",
-          key: 5,
-          path: "/questions/viewuser",
-          component: Viewuser
+          id: "main-showUser",
+          path: "/user/showUser",
+          component: ShowUser,
+          key:4,
         }
       ]
     },
     {
-      name: "router.marking",
+      name: "router.exam",
       children: [
         {
-          name: "router.marking.add",
-          id: "main-watchQuestions",
-          key: 6,
-          path: "/questions/addexams",
-          component: Addexams
+          name: "router.exam.add",
+          id: "main-addExam",
+          path: "/exam/addExam",
+          component: AddExam,
+          key:5,
         },
         {
-          name: "router.marking.lists",
-          id: "main-questionsType",
-          key: 7,
-          path: "/questions/examlist",
-          component: Examlist
+          name: "router.exam.list",
+          id: "main-questionsDetail",
+          path: "/exam/examList",
+          component: ExamList,
+          key:6,
         }
       ]
     },
@@ -123,44 +103,37 @@ export default {
       name: "router.class",
       children: [
         {
-          name: "router.class.classmanage",
-          id: "main-watchQuestions",
-          key: 8,
-          path: "/questions/classManagement",
-          component: Class
+          name: "router.class",
+          id: "	main-grade",
+          path: "/questions/ClassManage",
+          component: ClassManage,
+          key:7,
         },
         {
-          name: "router.class.teammanage",
-          id: "main-questionsType",
-          key: 9,
-          path: "/questions/studentManagement",
-          component: Classrooms
+          name: "router.class.room",
+          id: "main-room",
+          path: "/questions/ClassroomManage",
+          component: ClassroomManage,
+          key:8,
         },
         {
           name: "router.class.student",
-          id: "main-questionsType",
-          key: 10,
-          path: "/questions/classroomManagement",
-          component: Student
+          id: "main-student",
+          path: "/questions/StudentsManage",
+          component: StudentsManage,
+          key:9,
         }
       ]
     },
     {
-      name: "router.markings",
+      name: "router.mark",
       children: [
         {
-          name: "router.markings.class",
-          id: "main-watchQuestions",
-          key: 11,
-          path: "/questions/classroom",
-          component: Classroom
-        },
-        {
-          name: "router.markings.tabs",
-          id: "main-watchQuestions",
-          key: 12,
-          path: "/questions/tabfrom",
-          component: TabsFrom
+          name: "router.mark.classlist",
+          id: "main-examinationPapers",
+          path: "/questions/MarkingManage",
+          component: MarkingManage,
+          key:10,
         }
       ]
     }

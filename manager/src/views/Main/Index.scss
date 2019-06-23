@@ -1,0 +1,114 @@
+
+.land_top{
+  width: 100%;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding:0 50px;
+  background: #fff;
+}
+.centimg{
+  display: flex;
+  align-items: center;
+}
+
+:global {
+  .lang{
+    display: inline-block;
+    color: #0f0;
+    cursor: pointer;
+  }
+  .content {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .container {
+    height: 100%;
+  }
+  .loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ant-layout-header {
+    background: #fff;
+  }
+  .header_box {
+    display: flex;
+    justify-content: space-between;
+  }
+  .header_box > div:nth-child(1) {
+    width: 120px;
+    margin: 16px 28px 16px 0;
+    line-height: 31px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-family: "\5B8B\4F53";
+  }
+  .header_box > div:nth-child(2) {
+    color: #333;
+  }
+  .ant-layout-sider {
+    overflow: auto;
+  }
+  .header_box > div:nth-child(2) > span {
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+  .header_box > div:nth-child(2):hover {
+    background: #eee;
+  }
+  .header_box > div:nth-child(2) > span > img {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  .header_box > div > img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.top_img{
+  width: 120px;
+  color: #fff;
+  font-weight: 700;
+  font-family: "\5B8B\4F53";
+}
+.top_img img{
+  width: 100%;
+}
+
+.land_bottom{
+  flex:1;
+  display: flex;
+}
+.sing>span>span>img{
+  border-radius: 50%;
+  overflow: hidden;
+  }
+  .english{
+    border: 1px solid #ccc;
+    height: 30px;display: flex;
+    align-items: center;
+    margin-left: 10px;
+    padding: 2px 6px;
+    border-radius: 15px;
+  }

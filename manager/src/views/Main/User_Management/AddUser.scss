@@ -1,0 +1,38 @@
+.wrap {
+  width: 33.3%;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+:global {
+  .ant-btn-primary {
+    padding: 0 40px !important;
+    border-radius: 4px !important;
+    border: 0 !important;
+    font-size: 14px !important;
+    color: #fff !important;
+    background: linear-gradient(-90deg, #4e75ff, #0139fd) !important;
+  }
+  .contens{
+    padding: 20px;
+    box-sizing:border-box; 
+  }
+  .ant-input{
+    margin: 10px 0;
+  }
+  .ant-select-selection--single{
+    margin: 10px 0;
+  }
+  .ant-btn{
+    margin: 0 5px;
+  }
+  .ant-layout-content{
+    display: flex;
+    flex-wrap: wrap;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+  }
+}

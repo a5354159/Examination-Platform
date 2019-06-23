@@ -66,12 +66,14 @@ function IndexPage(props) {
                 alt=""
               />
               <b>chenmanjie</b>
-               <span
-          className="lang"
-          onClick={() => props.changeLocal(props.locale === "zh" ? "en" : "zh")}
-        >
-          {props.locale === "zh" ? "英文" : "中文"}
-        </span>
+              <span
+                className="lang"
+                onClick={() =>
+                  props.changeLocal(props.locale === "zh" ? "en" : "zh")
+                }
+              >
+                {props.locale === "zh" ? "英文" : "中文"}
+              </span>
             </span>
           </div>
         </div>
@@ -94,15 +96,15 @@ function IndexPage(props) {
             <Route path="/user/adduser" component={Adduser} />
             <Route path="/user/showUser" component={ShowUser} />
             <Route path="/exam/examList/detal" component={Alise} />
-           {/* 考试管理 */}
-              <Route path="/exam/addExam" component={AddExam} />
+            {/* 考试管理 */}
+            <Route path="/exam/addExam" component={AddExam} />
             <Route path="/exam/examList" component={ExamList} />
             {/* 班级管理 */}
-             <Route path="/questions/ClassManage" component={ClassManage} />
+            <Route path="/questions/ClassManage" component={ClassManage} />
             <Route
               path="/questions/ClassroomManage"
               component={ClassroomManage}
-            />  
+            />
             <Route
               path="/questions/StudentsManage"
               component={StudentsManage}

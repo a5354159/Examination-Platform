@@ -47,6 +47,11 @@ export default {
                             pathname: `/login`,
                             search: `?redirect=${encodeURIComponent(pathname)}`
                         }))
+                    }else{
+                        //请求用户权限
+                        dispatch({
+                            type:'userInfo'
+                        })
                     }
                 }else{
                     // 去登录页，如果已经登录跳回首页
@@ -77,9 +82,15 @@ export default {
                 action: data.code === 1 ? 1 : -1
             });
         },
-        *userInfo({payload},{call,put}){
+        *userInfo({payload},{call,put,select}){
+            //判断是否有权限信息
+            // console.log(select);
+            // let myView = yield call(select=>state.user.myView);
+            // if(myView.length){
+            //     return
+            // }
+
             let data = yield call(userInfo);
-            // console.log(data);
             yield put({
                 type: 'getUserInfo',
                 action: data.data
@@ -106,7 +117,7 @@ export default {
         // api接口权限
         *userApi({payload},{call,put}){
             let data = yield call(userApi);
-            console.log(data);
+            // console.log(data);
             yield put({
                 type: 'getUserApi',
                 action: data.data
@@ -115,7 +126,7 @@ export default {
         // 身份和api权限关系  
         *userIdentity_api({payload},{call,put}){
             let data = yield call(userIdentity_api);
-            console.log(data);
+            // console.log(data);
             yield put({
                 type: 'getUserIdentity_api',
                 action: data.data
@@ -124,7 +135,7 @@ export default {
         // 视图接口权限   
         *userView_authority({payload},{call,put}){
             let data = yield call(userView_authority);
-            console.log(data);
+            // console.log(data);
             yield put({
                 type: 'getUserView_authority',
                 action: data.data
@@ -133,7 +144,7 @@ export default {
         // 身份和视图权限关系
         *userIdentity_view({payload},{call,put}){
             let data = yield call(userIdentity_view);
-            console.log(data);
+            // console.log(data);
             yield put({
                 type: 'getUserIdentity_view',
                 action: data.data
@@ -149,7 +160,7 @@ export default {
         },
         *userData({payload},{call,put}){
             let data = yield call(getData)
-            console.log(data.data)
+            // console.log(data.data)
             yield put({
                 type:'getUserData',
                 action:data.data
@@ -180,7 +191,7 @@ export default {
         },
         *getApiViews({payload},{call,put}){
             let data = yield call(getApiData)
-            console.log(data)
+            // console.log(data)
             yield put({
                 type:'getApiViewS',
                 action:data.data
@@ -192,12 +203,12 @@ export default {
         },
         *getApiStatus({payload},{call,put}){
             let data=yield call(getApiViewStatus,payload)
-            console.log(data)
+            // console.log(data)
             data.code===1?message.success(data.msg):message.error(data.msg)
         },
         *upDataUser({payload},{call,put}){
             let data=yield call(upDateUserId,payload)
-            console.log(data)
+            // console.log(data)
             data.code===1?message.success(data.msg):message.error(data.msg)
         }
     },

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class componentName extends Component {
+ class componentName extends Component {
     componentDidMount() {
         let str = window.localStorage.getItem("arr")
         this.setState({
@@ -12,6 +12,8 @@ export default class componentName extends Component {
     }
     render() {
         let { str } = this.state;
+        console.log(this.props.history.location.search.split("=")[1])
+        // this.getDetailQuestion()
         return (
             <div className="content"><h2 style={{marginTop: "10px" }}>试题详情</h2>
                 <div className="ant-layout-content" style={{ background: 'rgb(255, 255, 255)', padding: '24px', margin: '0px 0px 20px', borderRadius: '10px', flex: '1 1 0%' }}>
@@ -33,4 +35,9 @@ export default class componentName extends Component {
             </div>
         );
     }
+    getDetailQuestion(){
+        console.log('aaa')
+    }
 }
+
+export default componentName

@@ -21,6 +21,9 @@ const Viewexam = dynamic({
 const Typeexam = dynamic({
   component: () => import("@/views/Exam/Questions/typeExam")
 });
+// const Detailexam = dynamic({
+//   component: () => import("@/views/Exam/Questions/detailExam")
+// });
 //用户管理
 const Adduser = dynamic({
   component: () => import("@/views/Exam/Usermanagement/addUser")
@@ -78,7 +81,14 @@ export default {
           key: 3,
           path: "/questions/type",
           component: Viewexam
-        }
+        },
+        // {
+        //   name: "router.exam.detail",
+        //   id: "main-questionsdetail",
+        //   key: 4,
+        //   path: "/questions/detail",
+        //   component: Detailexam
+        // }
       ]
     },
     {

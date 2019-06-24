@@ -1,45 +1,45 @@
-import React from "react";
-import { Router, Route, Switch } from "dva/router";
-import IndexPage from "@/views/Main/Index";
-import LoginPage from "@/views/Login/Index";
-import yamen from "@/views/Athod/403";
-import Errors from "@/views/Athod/404";
+import React from 'react';
+import { Router, Route, Switch,Redirect} from 'dva/router';
+import Login from './views/Login/index';
+import Home from './views/Exam/index';
+import Four from './views/Exam/Other/404'
+import Three from './views/Exam/Other/403'
+import { connect } from "dva"
 
-import { connect } from "dva";
-//引入国际化
-import { IntlProvider, addLocaleData } from "react-intl";
-import en from "react-intl/locale-data/en";
-import zh from "react-intl/locale-data/zh";
-import zhCN from "@/lang/zh-CN.js";
-import enUS from "@/lang/en-US.js";
-
+// 引入国际化
+import {IntlProvider, addLocaleData} from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import zh from 'react-intl/locale-data/zh';
+import zhCN from '@/lang/zh-CN.js';
+import enUS from '@/lang/en-US.js';
 const localMap = {
   en: enUS,
   zh: zhCN
-};
+}
 addLocaleData([...en, ...zh]);
-const mapStateToProps = state => {
+const mapStateToProps = state=>{
   return {
     locale: state.global.locale
-  };
-};
-const RouterView = connect(mapStateToProps)(({ locale, history }) => {
-  return (
-    <IntlProvider locale={locale} messages={localMap[locale]}>
-      <Router history={history}>
-        <Switch>
-          <Route path="/login" component={LoginPage} />
-          <Route path="/403" component={yamen} />
-          <Route path="/404" component={Errors} />
-          <Route path="/" component={IndexPage} />
+  }
+}
+const RouterView = connect(mapStateToProps)(({locale, history})=>{
+  return <IntlProvider locale={locale} messages={localMap[locale]}>
+    <Router history={history}>
+      <Switch>
+        <Route path="/login" component={Login} />
+          <Route path="/questions" component={Home} />
+          <Route path="/403" component={Three} />
+          <Route path="/404" component={Four} />
+          <Redirect form="/" to="/questions"></Redirect>
         </Switch>
-      </Router> 
-    </IntlProvider>
-  );
-});
+      </Router>
+  </IntlProvider>
+})
 
 function RouterConfig({ history }) {
-  return <RouterView history={history} />;
+  return (
+    <RouterView history={history}/>
+  );
 }
 
 export default RouterConfig;

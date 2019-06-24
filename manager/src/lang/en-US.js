@@ -1,18 +1,23 @@
-export default {
-  "router.questions": "QuestionManage",
-  "router.questions.add": "AddQuestions",
-  "router.questions.type": "QuestionsType",
-  "router.questions.view": "ViewQuestions",
-	'router.user':'UserManagement',
-	'router.user.addUser':'AddUser',
-	'router.user.show':'UserDisplay',
-	'router.exam':'ExamManagement',
-	'router.exam.add':'AddExam',
-	'router.exam.list':'VolumeList',
-	'router.class':'ClassManagement',
-	'router.class':'GradeManagement',
-	'router.class.room':'RoomManagement',
-	'router.class.student':'StudentManagement',
-	'router.mark':'MarkingManagement',
-	'router.mark.classlist':'PendingClass',
-};
+export default{
+    "router.exam":"questionManagement",
+    "router.exam.add":"AddquestionManagement",
+    "router.exam.classify":"ClassifyquestionManagement",
+    "router.exam.test":"TestquestionManagement",
+    
+    "router.user":"userManagement",
+    "router.user.adduser":"AdduserManagement",
+    "router.user.show":"userManagement",
+
+    "router.marking":"examinationManagement",
+    "router.marking.add":"AddexaminationManagement",
+    "router.marking.lists":"managementList",
+    
+    "router.class":"classManagement",
+    "router.class.classmanage":"classManagement",
+    "router.class.teammanage":"TeamManagement",
+    "router.class.student":"StudManagement",
+
+    "router.markings":"MarkingManagement",
+    "router.markings.class":"Awaitingapprovalclass",
+    "router.markings.tabs":"formmanagement",
+}

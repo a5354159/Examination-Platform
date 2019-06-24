@@ -1,123 +1,97 @@
-import React, { useEffect } from "react";
-import { Form, Icon, Input, Button, Checkbox, message } from "antd";
-import { connect } from "dva";
-import "./Index.scss";
+import React, {useEffect} from 'react';
+import { connect } from 'dva';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 
-function LoginPage(props) {
+import styles from './Index.scss';
+
+function IndexPage(props){
   // 判断是否登陆
-  useEffect(() => {
-    if (props.isLogin === 1) {
+  useEffect(()=>{
+    
+    if (props.detail === 1){
       // 1.提示登陆成功
-      message.success("登陆成功");
+      message.success('登陆成功');
       // 2.存储cookie
       // 3.跳转主页面
-      console.log("props.history", props.history);
-      let pathName = decodeURIComponent(
-        props.history.location.search.split("=")[1]
-      );
-      props.history.replace(pathName || "/");
-    } else if (props.isLogin === -1) {
+      let pathName = decodeURIComponent(props.history.location.search.split('=')[1]);
+      props.history.replace(pathName || '/');
+    }else if(props.detail === -1){
       // 登陆失败
-      message.error("用户名或密码错误");
+      message.error('用户名或密码错误')
     }
-  }, [props.isLogin]);
+  }, [props.detail]);
 
-  // 处理表单提交
-  let handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
-        // 调登录接口
         props.login({
-          user_name: values.username,
-          user_pwd: values.password
-        });
+          "user_name": values.username,
+          "user_pwd": values.password
+        })
       }
     });
   };
 
-  // 表单校验
-  const { getFieldDecorator } = props.form;
-  return (
-    <div className="main">
-      <div className="login_box">
-        <Form onSubmit={handleSubmit} className="login-form">
-          <Form.Item>
-            {getFieldDecorator("username", {
-              validateTrigger: "onBlur",
-              rules: [{ required: true, message: "请输入正确的用户名" }]
-            })(
-              <Input
-                prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                placeholder="Username"
-              />
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator("password", {
-              rules: [
-                {
-                  pattern: /^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])).*$/,
-                  message: "请输入正确的密码"
-                }
-              ]
-            })(
-              <Input
-                prefix={
-                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                type="password"
-                placeholder="Password"
-              />
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator("remember", {
-              valuePropName: "checked",
-              initialValue: true
-            })(<Checkbox>密码记住</Checkbox>)}
-            <a className="login-form-forgot" href="">
-              忘记密码
-            </a>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              登录
-            </Button>
-          </Form.Item>
-        </Form>
+    const { getFieldDecorator } = props.form;
+    return (
+      <div className={styles.box}>
+        <div className={styles.login}>
+          <div className={styles.logins}>
+            <Form onSubmit={handleSubmit} className="login-form">
+              <Form.Item>
+                {getFieldDecorator('username', {
+                  rules: [{ required: true, message: '请输入你的用户名!' }],
+                })(
+                  <Input
+                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    placeholder="请输入用户名"
+                  />,
+                )}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator('password', {
+                  rules: [{ pattern: /^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])).*$/, message: '密码校验失败!密码包含大小写字母、数字、特殊符号' }],
+                })(
+                  <Input
+                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    type="password"
+                    placeholder="请输入密码"
+                  />,
+                )}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator('remember', {
+                  valuePropName: 'checked',
+                  initialValue: false,
+                })(<Checkbox className={styles.pwd}>记住密码</Checkbox>)}
+                <a className={styles.pwds} href="">
+                  忘记密码
+                </a>
+                <Button type="primary" htmlType="submit" className={styles.btn}>
+                  登录
+                </Button>
+              </Form.Item>
+            </Form>
+          </div>
+        </div>
       </div>
-    </div>
-  );
-}
-
-// props的类型检查
-LoginPage.propTypes = {};
-// props的默认值
-LoginPage.defaultProps = {};
-
+    )
+  }
+IndexPage.propTypes = {};
 const mapStateToProps = state => {
-  return {
-    ...state.users
-  };
-};
+  return {...state.user}
+}
 
 const mapDisaptchToProps = dispatch => {
   return {
     login(payload) {
       dispatch({
-        type: "users/login",
+        type: 'user/login',
         payload
-      });
+      })
     }
-  };
-};
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  mapDisaptchToProps
-)(Form.create()(LoginPage));
+export default connect(mapStateToProps, mapDisaptchToProps)(Form.create({})(IndexPage));

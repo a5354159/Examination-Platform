@@ -1,7 +1,6 @@
 *{
   padding: 0px;
   margin: 0px;
-  line-height: 0;
 }
 #root{
   width: 100%;
@@ -10,13 +9,12 @@
 .box{
   width: 100%;
   height: 100%;
-  background:url("../../assets//17056.jpg");
-  background-size: 100%
+  background: #000080;
 }
 .login{
   width: 400px;
   height: 296px;
-  background: rgba(255, 255, 255, .5);
+  background: #FFFFFF;
   position: absolute;
   top: 25%;
   right: 15%;
@@ -29,7 +27,7 @@
   margin-top: 40px;
 }
 .btn{
-  width: 90%;
+  width: 100%;
   margin-top: 20px;
 }
 .pwd{
@@ -38,13 +36,12 @@
 .pwds{
   width: 20%;
 }
-.top{
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .login-form-button {
   width: 100%;
-  height: 80px;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-  box-sizing: border-box;
 }

@@ -1,0 +1,58 @@
+:global{
+    .box{
+        width: 100%;
+        height:80%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .box_button{
+        display: flex;
+        justify-content: space-around;
+    }
+    .box_list{
+        border: 1px solid #555;
+        width: 33%;
+        // height: 50%;
+        box-sizing: border-box;
+        .ant-tabs .ant-tabs-top .ant-tabs-line{
+            width: 100%;
+            height: 100%;
+        }
+        .tabpane{
+
+            display: flex;
+            flex-direction: column;
+        }
+        .list_box{
+            width: 90%;
+            height: 100%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    h1{
+        margin-top: 20px;
+        width: 100%;
+        height: 30px;
+        display: block;
+        border: 1px solid blue;
+        line-height: 30px;
+        text-align: center;
+        color: blue;
+    }
+    .input{
+        margin-top: 20px;
+    }
+    button{
+        // width: 20%;
+        height: 30px;
+        margin: 20px;
+    }
+    .select{
+        width: 30%;
+        height: 30px;
+        display: block;
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,25 @@
+.wrap{
+    width: 100%;
+    display: flex;
+    padding:2px 24px 20px;
+    flex-direction: column;
+}
+.title{
+    width: 100%;
+    height: 80px;
+    margin:  0 ;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 80px;
+}
+.bottom{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding:20px ;
+    background: #fff;
+    border-radius: 10px;
+}
+.list{
+    margin-top: 20px;
+}

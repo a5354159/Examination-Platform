@@ -1,8 +1,10 @@
 import React from "react";
 import { Router, Route, Switch } from "dva/router";
-// import Login from './views/Login';
-import Login from './views/Login/Index'
-import Meun from "./views/Meun/Menu";
+import IndexPage from "@/views/Main/Index";
+import LoginPage from "@/views/Login/Index";
+import yamen from "@/views/Athod/403";
+import Errors from "@/views/Athod/404";
+
 import { connect } from "dva";
 //添加国际化
 import en from "react-intl/locale-data/en";
@@ -30,10 +32,12 @@ const RouterView = connect(mapStateToProps)(({ locale, history }) => {
     <IntlProvider locale={locale} messages={localMap[locale]}>
       <Router history={history}>
         <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/" component={Meun} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/403" component={yamen} />
+          <Route path="/404" component={Errors} />
+          <Route path="/" component={IndexPage} />
         </Switch>
-      </Router>
+      </Router> 
     </IntlProvider>
   );
 });

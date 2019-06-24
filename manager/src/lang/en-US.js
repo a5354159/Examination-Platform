@@ -1,6 +1,18 @@
 export default {
-    'router.questions':'QuestionsManage',
-    'router.questions.add':'AddQuestions',
-    'router.qusetions.Type':'TypeQuestions',
-    'router.questions.List':'ListQuestions'
-}
+  "router.questions": "QuestionManage",
+  "router.questions.add": "AddQuestions",
+  "router.questions.type": "QuestionsType",
+  "router.questions.view": "ViewQuestions",
+	'router.user':'UserManagement',
+	'router.user.addUser':'AddUser',
+	'router.user.show':'UserDisplay',
+	'router.exam':'ExamManagement',
+	'router.exam.add':'AddExam',
+	'router.exam.list':'VolumeList',
+	'router.class':'ClassManagement',
+	'router.class':'GradeManagement',
+	'router.class.room':'RoomManagement',
+	'router.class.student':'StudentManagement',
+	'router.mark':'MarkingManagement',
+	'router.mark.classlist':'PendingClass',
+};

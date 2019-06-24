@@ -1,0 +1,99 @@
+// * {
+//   padding: 0;
+//   margin: 0;
+//   list-style: none;
+//   text-decoration: none;
+// }
+
+// .main {
+//   width: 100%;
+//   height: 100%;
+//   background: #0d6fbe;
+// }
+// .login_wraper {
+//   width: 400px;
+//   height: 300px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background-color: #fff;
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(30%, -60%);
+//   border-radius: 5px;
+//   box-sizing: border-box;
+// padding: 40px  10px 0 10px;
+// }
+// .iptbox {
+//   width: 358px;
+//   height: 40px;
+//   background-color: #f0f0f0;
+//   margin-bottom: 30px;
+//   display: flex;
+//   align-items: center;
+// }
+// .ipt {
+//   flex: 1;
+//   height: 100%;
+//   font-size:18px;
+// }
+// .textArea {
+//   width: 358px;
+//   height: 22px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+// span {
+//   color: #409eff;
+// }
+// .loginBtn {
+//   margin-top: 30px;
+//   width: 358px;
+//   height: 40px;
+// }
+
+:global {
+  * {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+  }
+  .main {
+    width: 100%;
+    height: 100%;
+    background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b999faa0&imgtype=0&src=http%3A%2F%2Fwap.bwie.com%2Fimages%2Fzsjz_bigpic2.jpg")
+      no-repeat center center #000080;
+    background-size: 100% 100%;
+    position: relative;
+  }
+  .login_box {
+    width: 400px;
+    height: 296px;
+    padding: 40px 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #fff;
+    position: absolute;
+    right: 15%;
+    top: 25%;
+    box-sizing: border-box;
+  }
+  .login-form {
+    max-width: 400px;
+  }
+  .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    width: 100%;
+    padding: 0 40px !important;
+    border-radius: 4px !important;
+    border: 0 !important;
+    font-size: 14px !important;
+    color: #fff !important;
+    background: linear-gradient(-90deg, #4e75ff, #0139fd) !important;
+  }
+}

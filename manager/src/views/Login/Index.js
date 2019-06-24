@@ -85,23 +85,23 @@ Login.propTypes = {
 
 }
 // props的默认值
-Login.defaultProps = {
-    
-}
+Login.defaultProps = {};
 
-const mapState = state => {
-    console.log('atate...',state)
-    return {
-        ...state.user
-    };
-}
-const mapDispatch = dispatch => ({
-    login(payload){
-        dispatch({
-            type: 'user/login',
-            payload
-        })
+const mapStateToProps = state => {
+  return {
+    ...state.users
+  };
+};
+
+const mapDisaptchToProps = dispatch => {
+  return {
+    login(payload) {
+      dispatch({
+        type: "users/login",
+        payload
+      });
     }
 
-})
-export default connect(mapState,mapDispatch)(Form.create()(Login));
+}}
+// export default connect(mapState,mapDispatch)(Form.create()(Login));
+export default connect(mapStateToProps,mapDisaptchToProps)(Form.create()(Login));

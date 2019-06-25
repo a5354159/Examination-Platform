@@ -12,7 +12,7 @@ import React, { Component } from 'react';
     }
     render() {
         let { str } = this.state;
-        console.log(this.props.history.location.search.split("=")[1])
+        // console.log(this.props.history.location.search.split("=")[1])
         // this.getDetailQuestion()
         return (
             <div className="content"><h2 style={{marginTop: "10px" }}>试题详情</h2>
@@ -35,9 +35,13 @@ import React, { Component } from 'react';
             </div>
         );
     }
-    getDetailQuestion(){
-        console.log('aaa')
-    }
+    // getDetailQuestion(){
+    //     console.log('aaa')
+    // }
+    // componentDidMount(){
+    //     console.log('aaa')
+
+    // }
 }
 
 export default componentName

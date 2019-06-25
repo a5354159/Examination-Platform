@@ -4,14 +4,17 @@ import { connect } from 'dva';
 const { TabPane } = Tabs;
 const { Option } = Select;
 
+
 class addUser extends Component {
     state={
         detail:[],
         subject:[],
         detailValue:'',
         subjectValue:'',
-        examList:[]
+        examList:[],
+        keyNum:1
     }
+
     componentDidMount(){
         this.props.examType()
     }
@@ -22,6 +25,55 @@ class addUser extends Component {
             subject,
             examList:studentList
         })
+    }
+    start(emlist,num){
+            if(num=="2"){
+                var arr=emlist && emlist.filter((el,i)=>(
+                    el.start_time<Date.parse(new Date())&&el.end_time>Date.parse(new Date())
+    
+                ))
+                return (
+                    <>
+                        {
+                           arr &&arr.map((el,i)=>{
+                            
+                     return <li key={i}><ol><li>{el.title}</li>
+                        <li><div>考试班级</div><div >{el.grade_name.map((item,index)=>{
+                            return <span key={index}>{item}</span>
+                        })}</div></li>
+                        <li>{el.user_name}</li>
+                        <li>{new Date(parseInt(el.start_time)).toLocaleString().replace(/:\d{1,2}$/,' ')}</li>
+                        <li>{new Date(parseInt(el.end_time)).toLocaleString().replace(/:\d{1,2}$/,' ')}</li>
+                        <li><a href="javascript:;" onClick={this.topstype.bind(this,el.exam_exam_id)}>详情</a></li></ol></li>
+                    })
+                        }
+                    </>
+                )
+            }else if(num=="3"){
+                var arr=emlist && emlist.filter((el,i)=>(
+                      el.end_time<Date.parse(new Date())
+    
+                ))
+                return (
+                    <>
+                        {
+                           arr &&arr.map((el,i)=>{
+                            
+                     return <li key={i}><ol><li>{el.title}</li>
+                        <li><div>考试班级</div><div>{el.grade_name.map((item,index)=>{
+                            return <span key={index}>{item}</span>
+                        })}</div></li>
+                        <li>{el.user_name}</li>
+                        <li>{new Date(parseInt(el.start_time)).toLocaleString().replace(/:\d{1,2}$/,' ')}</li>
+                        <li>{new Date(parseInt(el.end_time)).toLocaleString().replace(/:\d{1,2}$/,' ')}</li>
+                        <li><a href="javascript:;" onClick={this.topstype.bind(this,el.exam_exam_id)}>详情</a></li></ol></li>
+                    })
+                        }
+                    </>
+                )
+            }
+           
+
     }
     render() {
         let {detail,subject,examList} = this.state
@@ -54,14 +106,16 @@ class addUser extends Component {
                 <div className="el_conent">
                     <div className="tabs_conent">
                         <span>试卷列表</span>
-                        <Tabs onChange={this.callback} type="card">
+                        <Tabs onChange={(e)=>{this.setState({
+                            keyNum:e
+                        })}} type="card">
                             <TabPane tab="全部" key="1"></TabPane>
                             <TabPane tab="进行中" key="2"></TabPane>
                             <TabPane tab="已结束" key="3"></TabPane>
                         </Tabs>
                     </div>
                     <div className="ulsList">
-                        <ul className="uls">
+                        <ul className="uls" >
                             <li className="active_top"><ol><li>试卷信息</li>
                             <li>班级</li>
                             <li>创建人</li>
@@ -69,16 +123,17 @@ class addUser extends Component {
                             <li>结束时间</li>
                             <li>操作</li></ol></li>
                             {
-                                examList && examList.map((el,i)=>{
+                                this.state.keyNum==1?
+                                (examList && examList.map((el,i)=>{
                                     return <li key={i}><ol><li>{el.title}</li>
                                     <li><div>考试班级</div><div >{el.grade_name.map((item,index)=>{
                                         return <span key={index}>{item}</span>
                                     })}</div></li>
                                     <li>{el.user_name}</li>
-                                    <li>{el.start_time}</li>
-                                    <li>{el.end_time}</li>
+                                    <li>{new Date(parseInt(el.start_time)).toLocaleString().replace(/:\d{1,2}$/,' ')}</li>
+                                    <li>{new Date(parseInt(el.end_time)).toLocaleString().replace(/:\d{1,2}$/,' ')}</li>
                                     <li><a href="javascript:;" onClick={this.topstype.bind(this,el.exam_exam_id)}>详情</a></li></ol></li>
-                                })
+                                })):this.state.keyNum==2?this.start(examList,this.state.keyNum):(this.start(examList,this.state.keyNum))
                             }
                         </ul>
                     </div>
@@ -90,6 +145,8 @@ class addUser extends Component {
         let {history:{push}} = this.props
         push(`/questions/viewDetail?id=${e}`)
     }
+
+
 }
 const mapStateToProps = state => {
   return { ...state.add }

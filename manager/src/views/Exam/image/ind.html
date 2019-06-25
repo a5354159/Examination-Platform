@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <style>
+      img,
+      .imgs {
+        width: 800px;
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas
+      id="myCanvas"
+      style="width: 300px;height: 300px;border: 1px solid #ccc"
+    ></canvas>
+    <input type="file" />
+    <img class="img" src="" alt="" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var cavs = canvas.getContext("2d");
+      var ele = document.querySelector("input");
+        
+        function load(){
+            axios({
+                method: "post",
+                url: 'http://123.206.55.50:11000/tobase64',
+                //   data: { base64: this.result },
+                data: { url:'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1457704519,3529830056&fm=27&gp=0.jpg' }
+            }).then(body => {
+                console.log("body...", body);
+                let img=new Image()
+                img.src = body.data.data.base64;
+                img.onload=()=>{
+                    cavs.drawImage(img,0,0,300,300)
+                }
+            }).catch(e => {
+                console.log("e..", e);
+            });
+        }
+        load()
+      ele.onchange = function(e) {
+        let files = e.target.files;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          // document.querySelector('img').src=this.result
+          let img = new Image();
+          img.src=e.target.result;
+          img.onload = function() {
+            cavs.drawImage(img, 100, 60, 60, 50);
+            let base64= canvas.toDataURL('jpg',0.8)
+            console.log(base64)
+          };
+        };
+        reader.readAsDataURL(files[0]);
+      };
+    </script>
+  </body>
+</html>

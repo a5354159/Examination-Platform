@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Input, Select, Button, Modal ,message} from 'antd';
-import Editor from 'for-editor'
+import Editor from '@/vendor/for-editor'
 import { connect } from 'dva';
 const { Option } = Select;
 const confirm = Modal.confirm;
@@ -124,7 +124,6 @@ class Addexam extends Component {
     }
     
     btn = () => {
-        // let {value,value1,value2,select1,select2,select3} = this.state;
         var that = this
         confirm({
             title: '你确定要添加这道试题吗?',
@@ -133,15 +132,6 @@ class Addexam extends Component {
             okType: 'danger',
             cancelText: '取消',
             onOk() {
-                // that.props.addTop({
-                //     questions_type_id:select3,
-                //     questions_stem:value1,
-                //     subject_id:select2,
-                //     exam_id:select1,
-                //     user_id:'w6l6n-cbvl6s',
-                //     questions_answer:value2,
-                //     title:value
-                // })
                 if(window.localStorage.getItem("str")){
                     message.info("更新成功");
                 }else{
@@ -152,7 +142,6 @@ class Addexam extends Component {
                 window.localStorage.clear();
             },
             onCancel() {
-                // console.log('Cancel');
             },
         });
     }

@@ -59,14 +59,7 @@ const { Option } = Select;
                     </div>
                 </div>
                 <div className="el_conent">
-                    <ViewComponent data={questions} 
-                    // fn={(e)=>{
-                    //     console.log(this)
-                    //     // this.props.history.push(`/questions/detail?id=${e}`)
-                    // }} 
-                    // fn1={(e)=>{
-                    //     this.props.history.push(`/questions/add?id=${e}`)
-                    // }}
+                    <ViewComponent data={questions}
                     />
                 </div>
             </div>

@@ -13,6 +13,10 @@ import Addevent from "./Exammanagement/addEvent";
 import Viewdetail from "./Exammanagement/viewDetail";
 
 import { removeToken } from "@/utils/user";
+
+
+// import  { useEffect,useState } from 'react';
+
 const { Header, Sider, Content } = Layout;
 const confirm = Modal.confirm;
 
@@ -35,32 +39,61 @@ function SiderDemo(props) {
     setArr(arr);
   }, [props]);
 
+
+  const [visible,setvisible]=useState(false)
+  const [val,setval]=useState('https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1551624718911&amp;di=4a7004f8d71bd8da84d4eadf1b59e689&amp;imgtype=0&amp;src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg')
+
+
   if (!props.myView.length) {
     return null;
   }
 
   let onClick = ({ key }) => {
-    if (key * 1 === 4) {
-      let {
-        history: { push }
-      } = props;
-      confirm({
-        title: "你确定要退出当前的账号吗?",
-        content: "Are you sure you want to log out of your current account?",
-        okText: "Yes/我确定ε(┬┬＿┬┬)3",
-        okType: "danger",
-        cancelText: "No/考虑一下( ͡° ͜ʖ ͡°)✧",
-        onOk() {
-          removeToken();
-          push("/login");
-          window.localStorage.clear();
-        },
-        onCancel() {
-          console.log("Cancel");
-        }
-      });
+    if(key*1 === 4){
+        let {history:{push}} = props
+        confirm({
+            title: '你确定要退出当前的账号吗?',
+            content: 'Are you sure you want to log out of your current account?',
+            okText: 'Yes/我确定ε(┬┬＿┬┬)3',
+            okType: 'danger',
+            cancelText: 'No/考虑一下( ͡° ͜ʖ ͡°)✧',
+            onOk() {
+                removeToken()
+                push('/login')
+                window.localStorage.clear()
+            },
+            onCancel() {
+              console.log('Cancel');
+            },
+        });
+        
+    }else if(key*1===1){
+        setvisible(true)
     }
-  };
+};
+
+
+let showModal = () => {
+  setvisible(true)
+};
+
+let handleOk = e => {
+setvisible(false)
+};
+
+let handleCancel = e => {
+setvisible(false)
+};
+let inpChange=e=>{
+  let files=e.target.files
+  var reader=new FileReader()
+  reader.onload=function(){
+      setval(this.result)
+  }
+  reader.readAsDataURL(files[0])
+}
+
+
 
   let onclick = ({ key }) => {
     if (key * 1 === 1 * 1) {
@@ -88,27 +121,6 @@ function SiderDemo(props) {
     </Menu>
   );
 
-  function upload() { 
-    let file = document.querySelector('input[type=file]').files[0] // 获取选择的文件，这里是图片类型 
-    console.log('aaaaaaaaa')
-    let reader = new FileReader() 
-      reader.readAsDataURL(file) //读取文件并将文件以URL的形式保存在resulr属性中 base64格式 
-      reader.onload = function(e) { // 文件读取完成时触发  
-        let result = e.target.result // base64格式图片地址  
-        var image = new Image() 
-        image.src = result // 设置image的地址为base64的地址  
-        image.onload = function(){  
-          var canvas = document.querySelector("#canvas");  
-          var context = canvas.getContext("2d");  
-          canvas.width = image.width; // 设置canvas的画布宽度为图片宽度  
-          canvas.height = image.height;  
-          context.drawImage(image, 0, 0, image.width, image.height) // 在canvas上绘制图片  
-          let dataUrl = canvas.toDataURL('image/jpeg', 0.92) // 0.92为压缩比，可根据需要设置，设置过小会影响图片质量  
-          // dataUrl 为压缩后的图片资源，可将其上传到服务器  
-        }  
-      } 
-   }
-
   return (
     <div>
       <Layout>
@@ -120,7 +132,7 @@ function SiderDemo(props) {
               alt=""
             />
           </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center" ,position:'absolute',right:'70px',top:'20px'}}>
             <Dropdown overlay={zhes}>
               <span
                 style={{
@@ -135,42 +147,18 @@ function SiderDemo(props) {
               </span>
             </Dropdown>
             <Dropdown overlay={menu}>
-              <span
-                style={{
-                  height: "100%",
-                  width: "150px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-                {/* <div>
-                  <canvas
-                    id="canvas"
-                    style="width: 100px;height:100px;border: 1px solid #ccc"
-                  />
-                  <input
-                    type="file"
-                    accept="image/*"
-                    // type="file"
-                    name="imageFile"
-                    onchange={this.props.upload()}
-                  />
-                </div> */}
-                <img
-                  src="https://cdn.nlark.com/yuque/0/2019/png/anonymous/1547609339813-e4e49227-157c-452d-be7e-408ca8654ffe.png?x-oss-process=image/resize,m_fill,w_48,h_48/format,png"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    verticalAlign: "middel",
-                    borderRadius: "50%",
-                    margin: "0 10px"
-                  }}
-                  alt=""
-                />
-                chenmanjie
-              </span>
+                       <span style={{ height: '100%', width: "150px", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><img src={val} style={{ width: '30px', height: '30px', verticalAlign: 'middel', borderRadius: '50%', margin: '0 10px'}} alt="" />chenmanjie</span>
             </Dropdown>
+            <div>
+        <Modal
+          title="Basic Modal"
+          visible={visible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          <p><input type="file" onChange={inpChange}/></p>
+        </Modal>
+      </div>
           </div>
         </Header>
         <Layout>

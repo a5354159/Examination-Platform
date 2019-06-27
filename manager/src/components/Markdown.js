@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Editor from 'for-editor'
+import Editor from '@/vendor/vendor/for-editor'
 
 class Markdown extends Component {
   constructor() {

@@ -12,7 +12,6 @@ export default class componentName extends Component {
                 <div className="ant-list-item" key={i}>
                   <div
                     className="ant-list-item-content ant-list-item-content-single"
-                    // onClick={this.btn.bind(this, el)}
                   >
               <Link
                 to={{
